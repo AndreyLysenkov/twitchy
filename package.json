@@ -1,0 +1,29 @@
+{
+    "name": "twitchy",
+    "version": "0.0.1-zero",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node --use-strict ./src/main.js"
+    },
+    "author": "andrey lysenkov aka allan_walpy#3408",
+    "contributors": [
+        {
+            "name": "allan_walpy#3408 aka andrey lysenkov",
+            "email": "andreylysenkovallan@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/andreylysenkov/twitchy#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andreylysenkov/twitchy.git"
+    },
+    "bugs": {
+        "url": "https://github.com/andreylysenkov/twitchy/issues"
+    },
+    "dependencies": {
+        "discord.js": "~11.3.0",
+        "moment": "~2.20.1",
+        "tmi.js": "~1.2.1"
+    }
+}

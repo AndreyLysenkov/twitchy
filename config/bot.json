@@ -1,3 +1,15 @@
 {
-
+    "log": {
+        "level": {
+            "debug": 0,
+            "warn": 5,
+            "error": 10,
+            "basic": 13
+        },
+        "message": {
+            "login": {
+                "discord": "I am online"
+            }
+        }
+    }
 }

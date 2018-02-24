@@ -2,7 +2,7 @@ class LogReceiver {
 
     constructor(method, level) {
         this.method = method;
-        this.level = level == undefined ? level : 0;
+        this.level = level == undefined ? 0 : level;
     }
 
     log(message, level) {

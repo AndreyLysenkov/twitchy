@@ -8,6 +8,8 @@ class Bot {
     constructor(config, method, level) {
         this.config = config;
         this.logReceiver = [];
+        this.logMessage = this.config.log.message;
+        this.createDiscordClient();
     }
 
     addLogReceiver(method, level) {
@@ -15,27 +17,30 @@ class Bot {
     }
 
     log(message, level) {
+        if (!level) {
+            level = this.config.log.level.basic;
+        }
         this.logReceiver.forEach(x => x.log(message, level));
     }
 
-    login() {
+    registerDiscordClientLog(name) {
+        this.client.on(name, e => {
+            this.log(e, this.config.log.level[name]);
+        });
+    }
+
+    createDiscordClient() {
         this.client = new discord.Client();
 
-        this.client.on('debug', e => {
-            this.log(e, 0);
-        });
+        this.registerDiscordClientLog('debug');
+        this.registerDiscordClientLog('warn');
+        this.registerDiscordClientLog('error');
+    }
 
-        this.client.on('warn', e => {
-            this.log(e, 5);
-        });
-
-        this.client.on('error', e => {
-            this.log(e, 10);
-        });
-
+    login() {
         this.client.login(this.config.token.discord)
             .then(() => {
-                this.log('online', 13);
+                this.log(this.logMessage.login.discord);
             });
     }
 

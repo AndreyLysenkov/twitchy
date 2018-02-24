@@ -1,25 +1,18 @@
-const discord = require('discord.js');
 const moment = require('moment');
 
-const client = new discord.Client();
+const twitchy = require('./core/bot.js');
+const config = require('../config/main.json');
 
 const log = message => {
     console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
 };
 
-client.on('debug', e => {
-    log(e);
-});
+let bot = new twitchy(require(`../config/${config.bot.config}.json`));
 
-client.on('warn', e => {
-    log(e);
-});
+const token = require(`../config/${config.bot.token}.json`);
 
-client.on('error', e => {
-    log(e);
-});
+bot.addLogReceiver(log, config.log.console.level);
 
-client.login(require('../config/token.json').discord)
-    .then(() => {
-        log('online');
-    });
+bot.config.token = token;
+
+bot.login();

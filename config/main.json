@@ -1,0 +1,11 @@
+{
+    "bot" : {
+        "config": "bot",
+        "token": "token"
+    },
+    "log": {
+        "console": {
+            "level": 0
+        }
+    }
+}

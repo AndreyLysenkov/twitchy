@@ -38,7 +38,7 @@ class Bot {
     }
 
     login() {
-        this.client.login(this.config.token.discord)
+        return this.client.login(this.config.token.discord)
             .then(() => {
                 this.log(this.logMessage.login.discord);
             });

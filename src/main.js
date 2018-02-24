@@ -8,19 +8,18 @@ const log = message => {
 };
 
 client.on('debug', e => {
-    console.log(e);
+    log(e);
 });
 
 client.on('warn', e => {
-    console.log(e);
+    log(e);
 });
 
 client.on('error', e => {
-    console.log(e);
+    log(e);
 });
 
 client.login(require('../config/token.json').discord)
     .then(() => {
-        console.log(`online`);
-        console.log(client.guilds);
+        log('online');
     });

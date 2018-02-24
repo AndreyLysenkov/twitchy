@@ -23,7 +23,14 @@ bot.login().then(() => {
     let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
 
     const twitch = require('./twitch/chat.js');
+
+    /// me
     let chat = new twitch('allan_walpy', bot.config.twitch, log, []);
     chat.subscribe(channel, channel.send);
     chat.activate();
+
+    /// jackshepard
+    let chat2 = new twitch('jackshepardtwitch', bot.config.twitch, log, []);
+    chat2.subscribe(channel, channel.send);
+    chat2.activate();
 });

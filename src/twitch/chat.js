@@ -28,8 +28,11 @@ class Chat {
         this.config.event.forEach(x => this.activateEvent(x));
     }
 
-    subscribe(method) {
-        this.receiver.push(method);
+    subscribe(obj, method) {
+        this.receiver.push({
+            "obj": obj,
+            "method": method
+        });
     }
 
     connect() {
@@ -44,7 +47,7 @@ class Chat {
     }
 
     send(message) {
-        this.receiver.forEach(x => x(message));
+        this.receiver.forEach(x => x.method(x.obj, message));
     }
 
     sendMessage(message) {

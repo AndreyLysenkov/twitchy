@@ -16,3 +16,8 @@ bot.addLogReceiver(log, config.log.console.level);
 bot.config.token = token;
 
 bot.login();
+
+const twitch = require('./core/chat.js');
+let chat = new twitch('allan_walpy', bot.config.twitch, log, []);
+chat.subscribe(log);
+chat.activate();

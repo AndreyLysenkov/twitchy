@@ -20,7 +20,7 @@ class Chat {
 
     activateEvent(event) {
         if (event.enable) {
-            this.bot.on(event.name, (x, y, z, k) => this[`on${Chat.capitalizeFirstLetter(event.name)}`](this, x, y, z, k));
+            this.client.on(event.name, (x, y, z, k) => this[`on${Chat.capitalizeFirstLetter(event.name)}`](this, x, y, z, k));
         }
     }
 
@@ -33,11 +33,13 @@ class Chat {
     }
 
     connect() {
+        this.connectCount++;
         return this.client.connect();
     }
 
     activate() {
         this.activateEvents();
+        this.connectCount = 0;
         this.connect().then(() => this.log(`${this.channel} online`));
     }
 
@@ -47,7 +49,7 @@ class Chat {
 
     sendMessage(message) {
         return this.send(
-            `[${moment().format('HH:mm:ss')}] ${this.emoji_message(client, message)}`);
+            `[${moment().format('HH:mm:ss')}] ${message}`);
     }
 
     onAction(x, channel, userstate, message, self) {

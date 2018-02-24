@@ -10,126 +10,126 @@
             "login": {
                 "discord": "I am online"
             }
-        },
-        "twitch": {
-            "event": [
-                {
-                    "name": "action",
-                    "enable": true
-                },
-                {
-                    "name": "ban",
-                    "enable": true
-                },
-                {
-                    "name": "disconnected",
-                    "enable": true
-                },
-                {
-                    "name": "chat",
-                    "enable": true
-                },
-                {
-                    "name": "cheer",
-                    "enable": true
-                },
-                {
-                    "name": "clearChat",
-                    "enable": true
-                },
-                {
-                    "name": "connected",
-                    "enable": true
-                },
-                {
-                    "name": "connecting",
-                    "enable": true
-                },
-                {
-                    "name": "emoteOnly",
-                    "enable": true
-                },
-                {
-                    "name": "hosted",
-                    "enable": true
-                },
-                {
-                    "name": "hosting",
-                    "enable": true
-                },
-                {
-                    "name": "join",
-                    "enable": false
-                },
-                {
-                    "name": "logon",
-                    "enable": true
-                },
-                {
-                    "name": "message",
-                    "enable": false
-                },
-                {
-                    "name": "mod",
-                    "enable": false
-                },
-                {
-                    "name": "notice",
-                    "enable": false
-                },
-                {
-                    "name": "ping",
-                    "enable": false
-                },
-                {
-                    "name": "pong",
-                    "enable": false
-                },
-                {
-                    "name": "r9kbeta",
-                    "enable": true
-                },
-                {
-                    "name": "reconnect",
-                    "enable": true
-                },
-                {
-                    "name": "resub",
-                    "enable": true
-                },
-                {
-                    "name": "serverchange",
-                    "enable": true
-                },
-                {
-                    "name": "slowmode",
-                    "enable": true
-                },
-                {
-                    "name": "subscribers",
-                    "enable": true
-                },
-                {
-                    "name": "subscription",
-                    "enable": true
-                },
-                {
-                    "name": "timeout",
-                    "enable": true
-                },
-                {
-                    "name": "unhost",
-                    "enable": true
-                },
-                {
-                    "name": "unmod",
-                    "enable": false
-                },
-                {
-                    "name": "whisper",
-                    "enable": false
-                }
-            ]
         }
+    },
+    "twitch": {
+        "event": [
+            {
+                "name": "action",
+                "enable": true
+            },
+            {
+                "name": "ban",
+                "enable": true
+            },
+            {
+                "name": "disconnected",
+                "enable": true
+            },
+            {
+                "name": "chat",
+                "enable": true
+            },
+            {
+                "name": "cheer",
+                "enable": true
+            },
+            {
+                "name": "clearChat",
+                "enable": true
+            },
+            {
+                "name": "connected",
+                "enable": true
+            },
+            {
+                "name": "connecting",
+                "enable": true
+            },
+            {
+                "name": "emoteOnly",
+                "enable": true
+            },
+            {
+                "name": "hosted",
+                "enable": true
+            },
+            {
+                "name": "hosting",
+                "enable": true
+            },
+            {
+                "name": "join",
+                "enable": false
+            },
+            {
+                "name": "logon",
+                "enable": true
+            },
+            {
+                "name": "message",
+                "enable": false
+            },
+            {
+                "name": "mod",
+                "enable": false
+            },
+            {
+                "name": "notice",
+                "enable": false
+            },
+            {
+                "name": "ping",
+                "enable": false
+            },
+            {
+                "name": "pong",
+                "enable": false
+            },
+            {
+                "name": "r9kbeta",
+                "enable": true
+            },
+            {
+                "name": "reconnect",
+                "enable": true
+            },
+            {
+                "name": "resub",
+                "enable": true
+            },
+            {
+                "name": "serverchange",
+                "enable": true
+            },
+            {
+                "name": "slowmode",
+                "enable": true
+            },
+            {
+                "name": "subscribers",
+                "enable": true
+            },
+            {
+                "name": "subscription",
+                "enable": true
+            },
+            {
+                "name": "timeout",
+                "enable": true
+            },
+            {
+                "name": "unhost",
+                "enable": true
+            },
+            {
+                "name": "unmod",
+                "enable": false
+            },
+            {
+                "name": "whisper",
+                "enable": false
+            }
+        ]
     }
 }

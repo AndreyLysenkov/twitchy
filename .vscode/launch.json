@@ -6,14 +6,7 @@
                 "request": "launch",
                 "name": "launch botty",
                 "useWSL": false,
-                "program": "${workspaceRoot}\\src\\main.js"
-            },
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "launch botty (linux)",
-                "useWSL": true,
-                "program": "${workspaceFolder}\\src\\main.js"
+                "program": "${workspaceRoot}\/src\/main.js"
             }
         ]
     }

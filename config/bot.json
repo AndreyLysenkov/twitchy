@@ -68,7 +68,7 @@
             },
             {
                 "name": "message",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "mod",
@@ -76,18 +76,22 @@
             },
             {
                 "name": "notice",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "ping",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "pong",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "r9kbeta",
+                "enable": true
+            },
+            {
+                "name": "roomstate",
                 "enable": true
             },
             {
@@ -124,12 +128,31 @@
             },
             {
                 "name": "unmod",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "whisper",
-                "enable": false
+                "enable": true
             }
-        ]
+        ],
+        "tmi": {
+            "option": {
+                "debug": true
+            },
+            "connection": {
+                "reconnect": true,
+                "reconnectInterval": 2000,
+                "secure": true,
+                "timeout": 5000
+            },
+            "identity": {
+                "username": "allan_walpy"
+            },
+            "channels": [
+                "allan_walpy",
+                "jackshepardtwitch",
+                "blackufa_twitch"
+            ]
+        }
     }
 }

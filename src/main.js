@@ -25,12 +25,8 @@ bot.login().then(() => {
     const twitch = require('./twitch/chat.js');
 
     /// me
-    let chat = new twitch('allan_walpy', bot.config.twitch, log, []);
+    let chat = new twitch('allan_walpy', bot.config.twitch, token.twitch, log, []);
     chat.subscribe(channel, channel.send);
     chat.activate();
 
-    /// jackshepard
-    let chat2 = new twitch('jackshepardtwitch', bot.config.twitch, log, []);
-    chat2.subscribe(channel, channel.send);
-    chat2.activate();
 });

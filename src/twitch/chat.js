@@ -3,12 +3,16 @@ const moment = require('moment');
 
 class Chat {
 
-    constructor(channel, config, log, emojie) {
+    constructor(channel, config, token, log, emojie) {
         this.channel = `#${channel}`;
         this.config = config;
-        this.client = new twitch.client({
-            channels: [this.channel]
-        });
+        config.tmi = Chat.addToken(config.tmi, token);
+        config.tmi.logger = {
+            "info": (x) => { console.log(x); },
+            "warn": (x) => { console.log(x); },
+            "error": (x) => { console.log(x); }
+        };
+        this.client = new twitch.client(config.tmi);
         this.receiver = [];
         this.log = log;
         this.emojie = emojie;
@@ -16,6 +20,15 @@ class Chat {
 
     static capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    static addToken(tmi_option, token) {
+        if (!tmi_option)
+            tmi_option = {};
+        if (!tmi_option.identity)
+            tmi_option.identity = {};
+        tmi_option.identity.password = token;
+        return tmi_option;
     }
 
     activateEvent(event) {
@@ -52,124 +65,203 @@ class Chat {
 
     sendMessage(message) {
         return this.send(
-            `[${moment().format('HH:mm:ss')}] ${message}`);
+            `[${moment().format('HH:mm:ss')}] \`\`\`${message}\`\`\``);
+    }
+
+    recordOptions(name, option) {
+        if (option)
+            return `the: ${name} : \n${JSON.stringify(option)}\n`;
+        return `the: ${name} : \nNULL\n`;
     }
 
     onAction(x, channel, userstate, message, self) {
-        x.sendMessage(`**${userstate.username}**: *${message}*`);
+        x.sendMessage(`\n-action.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('self', self)}`);
     }
 
     onBan(x, channel, username, reason) {
-        x.sendMessage(`${username} was banned due to  ${reason}`);
+        x.sendMessage(`\n-ban.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('reason', reason)}`);
     }
 
     onChat(x, channel, userstate, message, self) {
-        x.sendMessage(`**${userstate.username}**: ${message}`);
+        x.sendMessage(`\n-chat.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('self', self)}`);
     }
 
     onCheer(x, channel, userstate, message) {
-        x.sendMessage(`**${userstate.username}** has cheered up streamer with ${userstate.bits} bits`);
+        x.sendMessage(`\n-cheer.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('message', message)}`);
     }
 
     onClearChat(x, channel) {
-        x.sendMessage(`**CHAT HAS BEEN CLEARED**`)
+        x.sendMessage(`\n-clearchat.
+            ${x.recordOptions('channel', channel)}`);
     }
 
     onConnected(x, adress, port) {
-        x.log(`**CONNECTED**`);
+        x.sendMessage(`\n-connected.
+            ${x.recordOptions('adress', adress)}
+            ${x.recordOptions('port', port)}`);
     }
 
     onConnecting(x, adress, port) {
-        x.log(`*connecting*`);
+        x.sendMessage(`\n-connected.
+            ${x.recordOptions('adress', adress)}
+            ${x.recordOptions('port', port)}`);
     }
 
     onDisconnect(x, reason) {
-        x.sendMessage(`*disconnected due to ${reason == "" ? "no reason at all" : reason}*`);
+        x.sendMessage(`\n-disconected.
+            ${x.recordOptions('reason', reason)}`);
         this.connect();
     }
 
     onEmoteOnly(x, channel, enabled) {
-        x.sendMessage(`*Emote only is **${enabled ? "enabled" : "disabled"}**`);
+        x.sendMessage(`\n-emoteonly.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('enabled', enabled)}`);
     }
 
     onHosted(x, channel, username, viewers) {
-        x.sendMessage(`*you have been hosted by **${username}** with **${viewers}** viewvers*`);
+        x.sendMessage(`\n-hosted.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('viewers', viewers)}`);
     }
 
     onHosting(x, channel, target, viewers) {
-        x.sendMessage(`*now hosting **${target}** with **${viewers}** viewvers*`);
+        x.sendMessage(`\n-hosting.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('target', target)}
+            ${x.recordOptions('viewers', viewers)}`);
     }
 
     onJoin(x, channel, username, self) {
-        x.sendMessage(`***${username}** joined*`);
+        x.sendMessage(`\n-join.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('self', self)}`);
     }
 
     onLogon(x) {
-        x.log(`*logged*`);
+        x.sendMessage(`\n-logon.`);
     }
 
     onMessage(x, channel, userstate, message, self) {
-        x.sendMessage(`**${userstate.username}** (${userstate["message-type"]}): ${message}`);
+        x.sendMessage(`\n-message.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('self', self)}`);
     }
 
     onMod(x, channel, username) {
-        x.sendMessage(`***${username}** is mod now*`);
+        x.sendMessage(`\n-mod.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}`);
     }
 
     onNotice(x, channel, msgid, message) {
-        x.sendMessage(`*the message \`${message}\` was rejected [${msgid}]*`);
+        x.sendMessage(`\n-notice.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('msgid', msgid)}
+            ${x.recordOptions('message', message)}`);
     }
 
     onPing() {
-        x.sendMessage(`*ping was received*`);
+        //x.sendMessage(`\n-ping.`);
     }
 
     onPong(latency) {
-        x.sendMessage(`*pong was received **${latency}ms***`);
+        //log(`-pong-${latency}`);
     }
 
     onR9kbeta(x, channel, enabled) {
-        x.sendMessage(`*r9kbeta was ${enabled ? "enabled" : "disabled"}*`);
+        x.sendMessage(`\n-r9kbeta.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('enabled', enabled)}`);
     }
 
     onReconnect(x) {
-        x.sendMessage(`*reconnecting*`);
+        x.sendMessage(`\n-reconnect.`);
     }
 
     onResub(x, channel, username, months, message) {
-        x.sendMessage(`**${username}** RESUB FOR **${months}** months \n${message}`);
+        x.sendMessage(`\n-resub.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('months', months)}
+            ${x.recordOptions('message', message)}`);
     }
 
     onServerChange(x, channel) {
-        x.sendMessage(`*${channel} server cluster changed*`);
+        x.sendMessage(`\n-serverchange.
+            ${x.recordOptions('channel', channel)}`);
     }
 
     onSlowmode(x, channel, enabled, length) {
-        x.sendMessage(`*slowmode is ${enabled ? `enabled: message every ${length} seconds` : "disabled"}*`);
+        x.sendMessage(`\n-slowmode.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('enabled', enabled)}
+            ${x.recordOptions('length', length)}`);
     }
 
     onSubscribers(x, channel, enabled) {
-        x.sendMessage(`*subscribers only mode is ${enabled ? "enabed" : "disabled"}*`);
+        x.sendMessage(`\n-subscribers.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('enabled', enabled)}`);
     }
 
     onSubscription(x, channel, username, method) {
-        x.sendMessage(`**${username}** SUBSCRIBED ${method}`);
+        x.sendMessage(`\nsubscription.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('method', method)}`);
     }
 
     onTimeout(x, channel, username, reason, duration) {
-        x.sendMessage(`***${username}** was muted for ${duration}* seconds due to ${reason == "" ? "unspecified reason" : reason}`);
+        x.sendMessage(`\n-timeout.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}
+            ${x.recordOptions('reason', reason)}
+            ${x.recordOptions('duration', duration)}`);
     }
 
     onUnhost(x, channel, viewers) {
-        x.sendMessage(`*stoped hosting with ${viewers} viewers*`);
+        x.sendMessage(`\n-unhost.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('viewers', viewers)}`);
     }
 
     onUnmod(x, channel, username) {
-        x.sendMessage(`**${username}** is no longer a moder`);
+        x.sendMessage(`\n-unmod.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('username', username)}`);
     }
 
     onWhisper(x, from, userstate, message, self) {
-        x.sendMessage(`*got whisper from ${from}*: ${message}`);
+        x.sendMessage(`\n-whisper.
+            ${x.recordOptions('from', from)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('self', self)}`);
+    }
+
+    onRoomstate(x, channel, state) {
+        x.sendMessage(`\n-roomstate.
+            ${x.recordOptions('channel', channel)}
+            ${x.recordOptions('state', state)}`);
     }
 
 }

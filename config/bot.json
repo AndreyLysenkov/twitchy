@@ -153,6 +153,7 @@
                 "jackshepardtwitch",
                 "blackufa_twitch"
             ]
-        }
+        },
+        "maxReconnection" : 10
     }
 }

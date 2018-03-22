@@ -16,6 +16,7 @@ class Chat {
         this.receiver = [];
         this.log = log;
         this.emojie = emojie;
+        this.disconnectCount = 0;
     }
 
     static capitalizeFirstLetter(str) {
@@ -49,7 +50,9 @@ class Chat {
     }
 
     connect() {
-        this.connectCount++;
+        if (this.disconnectCount > this.config.maxReconnection) {
+            this.client = new twitch.client(this.config.tmi);
+        }
         return this.client.connect();
     }
 
@@ -122,6 +125,7 @@ class Chat {
     }
 
     onDisconnect(x, reason) {
+        this.disconnectCount++;
         x.sendMessage(`\n-disconected.
             ${x.recordOptions('reason', reason)}`);
         this.connect();

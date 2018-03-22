@@ -1,12 +1,14 @@
 class Chat {
 
-    constructor(client, guild, chat) {
+    constructor(client, guildId, channelId) {
         this.client = client;
-        this.channel = this.client.guilds.get(guild).channels.get(chat);
+        this.guildId = guildId;
+        this.channelId = channelId;
+        this.channel = this.client.guilds.get(guildId).channels.get(channelId);
     }
 
-    send(chat, message) {
-        chat.channel.send(message);
+    send(message) {
+        this.obj.channel.send(message);
     }
 
 }

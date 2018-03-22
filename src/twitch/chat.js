@@ -34,7 +34,7 @@ class Chat {
 
     activateEvent(event) {
         if (event.enable) {
-            this.client.on(event.name, (x, y, z, k) => this[`on${Chat.capitalizeFirstLetter(event.name)}`](this, x, y, z, k));
+            this.client.on(event.name, (x, y, z, k, m, n, o, l) => this[`on${Chat.capitalizeFirstLetter(event.name)}`](this, x, y, z, k, m, n, o, l));
         }
     }
 
@@ -63,7 +63,7 @@ class Chat {
     }
 
     send(message) {
-        this.receiver.forEach(x => x.method(x.obj, message));
+        this.receiver.forEach(x => x.method(message));
     }
 
     sendMessage(message) {
@@ -71,6 +71,7 @@ class Chat {
             `[${moment().format('HH:mm:ss')}] \`\`\`${message}\`\`\``);
     }
 
+    //tmp
     recordOptions(name, option) {
         if (option)
             return `the: ${name} : \n${JSON.stringify(option)}\n`;
@@ -183,12 +184,12 @@ class Chat {
             ${x.recordOptions('message', message)}`);
     }
 
-    onPing() {
-        //x.sendMessage(`\n-ping.`);
+    onPing(x) {
+        x.sendMessage(`\n-ping.`);
     }
 
-    onPong(latency) {
-        //log(`-pong-${latency}`);
+    onPong(x, latency) {
+        x.sendMessage(`\n-pong-${latency}`);
     }
 
     onR9kbeta(x, channel, enabled) {
@@ -201,12 +202,14 @@ class Chat {
         x.sendMessage(`\n-reconnect.`);
     }
 
-    onResub(x, channel, username, months, message) {
+    onResub(x, channel, username, months, message, userstate, methods) {
         x.sendMessage(`\n-resub.
             ${x.recordOptions('channel', channel)}
             ${x.recordOptions('username', username)}
             ${x.recordOptions('months', months)}
-            ${x.recordOptions('message', message)}`);
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('userstate', userstate)}
+            ${x.recordOptions('methods', methods)}`);
     }
 
     onServerChange(x, channel) {
@@ -227,11 +230,13 @@ class Chat {
             ${x.recordOptions('enabled', enabled)}`);
     }
 
-    onSubscription(x, channel, username, method) {
+    onSubscription(x, channel, username, method, message, userstate) {
         x.sendMessage(`\nsubscription.
             ${x.recordOptions('channel', channel)}
             ${x.recordOptions('username', username)}
-            ${x.recordOptions('method', method)}`);
+            ${x.recordOptions('method', method)}
+            ${x.recordOptions('message', message)}
+            ${x.recordOptions('userstate', userstate)}`);
     }
 
     onTimeout(x, channel, username, reason, duration) {

@@ -50,10 +50,11 @@ class Chat {
     }
 
     connect() {
-        if (this.disconnectCount > this.config.maxReconnection) {
-            this.client = new twitch.client(this.config.tmi);
+        if (this.disconnectCount <= this.config.maxReconnection) {
+            return this.client.connect();
         }
-        return this.client.connect();
+        this.send("-disconnected- ***f*resh**old reached");
+        this.client = new twitch.client(this.config.tmi);
     }
 
     activate() {

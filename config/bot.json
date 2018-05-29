@@ -68,7 +68,7 @@
             },
             {
                 "name": "message",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "mod",
@@ -80,11 +80,11 @@
             },
             {
                 "name": "ping",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "pong",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "r9kbeta",
@@ -92,7 +92,7 @@
             },
             {
                 "name": "roomstate",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "reconnect",
@@ -104,7 +104,7 @@
             },
             {
                 "name": "serverchange",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "slowmode",
@@ -124,15 +124,15 @@
             },
             {
                 "name": "unhost",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "unmod",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "whisper",
-                "enable": true
+                "enable": false
             }
         ],
         "tmi": {

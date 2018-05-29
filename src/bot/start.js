@@ -19,12 +19,11 @@ bot.config.token = token;
 /// 338714704002285568 - guild
 /// 402156171194269706 - channel
 bot.login().then(() => {
-    let discord_channel = require('../discord/chat.js');
-    let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
-
     const twitch = require('../twitch/chat.js');
+    let discord_channel = require('../discord/chat.js');
 
     /// me
+    let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
     let chat = new twitch('allan_walpy', bot.config.twitch, token.twitch, log, []);
     chat.subscribe(channel, channel.send);
     chat.activate();

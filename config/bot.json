@@ -150,8 +150,7 @@
             },
             "channels": [
                 "allan_walpy",
-                "jackshepardtwitch",
-                "blackufa_twitch"
+                "jackshepardtwitch"
             ]
         },
         "maxReconnection" : 10

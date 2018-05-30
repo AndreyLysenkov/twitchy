@@ -1,1 +1,3 @@
-global.bot = require('./bot/start.js');
+const app = require('./app.js');
+
+app.start();

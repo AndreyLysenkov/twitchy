@@ -1,11 +1,11 @@
 const moment = require('moment');
 
-const twitchy = require('../core/bot.js');
-const config = require('../../config/main.json');
+const twitchy = require('./core/bot.js');
+const config = require('./../config/main.json');
 
-let bot = new twitchy(require(`../../config/${config.bot.config}.json`));
+let bot = new twitchy(require(`./../config/${config.bot.config}.json`));
 
-const token = require(`../../config/${config.bot.token}.json`);
+const token = require(`./../config/${config.bot.token}.json`);
 
 const log = message => {
     console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message.replace(token.discord, '---TOKEN---')}`);
@@ -19,8 +19,8 @@ bot.config.token = token;
 /// 338714704002285568 - guild
 /// 402156171194269706 - channel
 bot.login().then(() => {
-    const twitch = require('../twitch/chat.js');
-    let discord_channel = require('../discord/chat.js');
+    const twitch = require('./twitch/chat.js');
+    let discord_channel = require('./discord/chat.js');
 
     /// me
     let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);

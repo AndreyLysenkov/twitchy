@@ -7,7 +7,7 @@ class Chat {
         this.channel = this.client.guilds.get(guildId).channels.get(channelId);
     }
 
-    send(message) {
+    receive(message) {
         this.obj.channel.send(message);
     }
 

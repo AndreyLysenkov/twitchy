@@ -26,13 +26,13 @@ bot.login().then(() => {
     let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
     let chat = new twitch('allan_walpy', bot.config.twitch, token.twitch, log, []);
     chat.subscribe(channel, channel.send);
-    chat.activate();
+    chat.start();
 
     /// vultr jack
     let channel2 = new discord_channel(bot.client, `338714704002285568`, `353195227558838275`);
     let chat2 = new twitch('jackshepardtwitch', bot.config.twitch, token.twitch, log, []);
     chat2.subscribe(channel2, channel2.send);
-    chat2.activate();
+    chat2.start();
 });
 
 module.exports = bot;

@@ -1,42 +1,44 @@
-const twitch = require('twitch-webchat');
+const twitch = require('tmi.js').client;
 
 class Chat {
 
-    constructor(channel) {
+    constructor(channel, config, token, log) {
         this.channel = channel;
+        this.config = config;
+        this.log = log;
         this.receiver = [];
-        this.twitch = {};
+
+        if (!this.config)
+            this.config = {};
+        if (!this.config.tmi)
+            this.config.tmi = {};
+        if (token)
+            this.config.tmi.identity = token;
+
+        //this.config.tmi.logger = this.log;
+        this.config.channel = [this.channel];
+
+        this.twitch = new twitch(this.config.tmi);
+
+        this.twitch.on("message",
+            (channel, userstate, message, self) =>
+                this.event(this,
+                    {
+                        "channel": channel,
+                        "userstate": userstate,
+                        "message": message,
+                        "self": self
+                    })
+        );
     }
 
     start() {
-        this.twitch = twitch.start(this.channel, 
-            (error, message) => this.event(this, error, message));
+        this.twitch.connect();
     }
 
-    event(chat, error, message) {
-        if (error) {
-            throw error;
-        }
-
-        switch (message.type) {
-            case 'chat':
-                // TODO;
-                break;
-            case 'system':
-                // TODO;
-                break;
-            case 'tick':
-                // TODO;
-                break;
-            case 'debug':
-                // TODO;
-                break;
-            default:
-            // TODO;
-        }
-
-        // tmp;
-        chat.send(JSON.stringify(message));
+    event(chat, message) {
+        // tmp; TODO;
+        chat.send(JSON.stringify(message, null, 4));
     }
 
     send(message) {

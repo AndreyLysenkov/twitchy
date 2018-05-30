@@ -140,19 +140,20 @@
                 "debug": true
             },
             "connection": {
+                "port": 443,
                 "reconnect": true,
-                "reconnectInterval": 2000,
+                "maxReconnectAttempts": 20,
+                "maxReconnectInterval": 30000,
+                "reconnectDecay": 1.75,
+                "reconnectInterval": 1000,
                 "secure": true,
                 "timeout": 5000
-            },
-            "identity": {
-                "username": "allan_walpy"
             },
             "channels": [
                 "allan_walpy",
                 "jackshepardtwitch"
             ]
         },
-        "maxReconnection" : 10
+        "maxReconnection" : 15
     }
 }

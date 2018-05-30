@@ -38,8 +38,9 @@
     "dependencies": {
         "discord.js": "github:discordjs/discord.js",
         "moment": "^2.22.1",
-        "twitch-webchat": "^2.0.14",
-        "string-format": "^2.0.0"
+        "string-format": "^2.0.0",
+        "ws": "^5.2.0",
+        "tmi.js": "github:tmijs/tmi.js"
     },
     "devDependencies": {
         "eslint": "github:eslint/eslint"

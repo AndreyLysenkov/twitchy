@@ -8,7 +8,7 @@ class Chat {
     }
 
     receive(message) {
-        this.obj.channel.send(message);
+        this.channel.send(message);
     }
 
 }

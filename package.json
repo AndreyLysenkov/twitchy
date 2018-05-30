@@ -1,29 +1,57 @@
 {
     "name": "twitchy",
-    "version": "0.0.1-zero",
-    "main": "src/main.js",
-    "scripts": {
-        "start": "node --use-strict ./src/main.js"
-    },
-    "author": "andrey lysenkov aka allan_walpy#3408",
-    "contributors": [
-        {
-            "name": "allan_walpy#3408 aka andrey lysenkov",
-            "email": "andreylysenkovallan@gmail.com"
-        }
-    ],
+    "version": "0.1.0-zero",
     "license": "MIT",
-    "homepage": "https://github.com/andreylysenkov/twitchy#readme",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/andreylysenkov/twitchy.git"
+    "description": "log twitch chat to discord chat",
+    "keywords": [
+        "discord",
+        "twitch",
+        "twitch-chat",
+        "twitch-log",
+        "bot"
+    ],
+    "author": {
+        "name": "allan_walpy#3408 aka andrey lysenkov",
+        "email": "andreylysenkovallan@gmail.com",
+        "url": "https://allan-walpy.github.io"
     },
+    "homepage": "https://github.com/allan-walpy/twitchy#readme",
+    "repository": "github:allan_walpy/twitchy",
     "bugs": {
-        "url": "https://github.com/andreylysenkov/twitchy/issues"
+        "url": "https://github.com/allan-walpy/twitchy/issues"
+    },
+    "directories.lib": "/src",
+    "config": {
+        "data-directory": "config",
+        "config-file": "config.json",
+        "token-file": "token.json"
+    },
+    "os": [
+        "linux",
+        "win32",
+        "darwin"
+    ],
+    "engines": {
+        "node": ">=8.11.0",
+        "npm": ">=5.6.0"
     },
     "dependencies": {
-        "discord.js": "~11.3.0",
-        "moment": "~2.20.1",
-        "tmi.js": "~1.2.1"
+        "discord.js": "github:discordjs/discord.js",
+        "moment": "^2.22.1",
+        "tmi.js": "github:tmijs/tmi.js",
+        "twitch-webchat": "^2.0.14",
+        "string-format": "^2.0.0"
+    },
+    "devDependencies": {
+        "eslint": "github:eslint/eslint"
+    },
+    "bundleDependencies": [
+        "discord.js",
+        "string-format"
+    ],
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node --use-strict ./src/main.js",
+        "start-linux": "nodejs --use-strict ./src/main.js"
     }
 }

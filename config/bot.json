@@ -13,6 +13,9 @@
         }
     },
     "twitch": {
+        "register": {
+            "statusChannel": "#status#"
+        },
         "event": [
             {
                 "name": "action",

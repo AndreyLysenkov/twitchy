@@ -39,7 +39,6 @@
         "discord.js": "github:discordjs/discord.js",
         "moment": "^2.22.1",
         "string-format": "^2.0.0",
-        "ws": "^5.2.0",
         "tmi.js": "github:tmijs/tmi.js"
     },
     "devDependencies": {

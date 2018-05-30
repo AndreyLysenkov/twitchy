@@ -38,7 +38,6 @@
     "dependencies": {
         "discord.js": "github:discordjs/discord.js",
         "moment": "^2.22.1",
-        "tmi.js": "github:tmijs/tmi.js",
         "twitch-webchat": "^2.0.14",
         "string-format": "^2.0.0"
     },
@@ -51,7 +50,8 @@
     ],
     "main": "src/main.js",
     "scripts": {
-        "start": "node --use-strict ./src/main.js",
+        "start": "npm run-script start-win || npm run-script start-linux",
+        "start-win": "node --use-strict ./src/main.js",
         "start-linux": "nodejs --use-strict ./src/main.js"
     }
 }

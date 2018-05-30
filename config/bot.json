@@ -92,7 +92,7 @@
             },
             {
                 "name": "roomstate",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "reconnect",
@@ -104,7 +104,7 @@
             },
             {
                 "name": "serverchange",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "slowmode",
@@ -124,7 +124,7 @@
             },
             {
                 "name": "unhost",
-                "enable": false
+                "enable": true
             },
             {
                 "name": "unmod",

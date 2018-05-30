@@ -20,16 +20,26 @@ class Chat {
 
         this.twitch = new twitch(this.config.tmi);
 
-        this.twitch.on("message",
-            (channel, userstate, message, self) =>
-                this.event(this,
-                    {
-                        "channel": channel,
-                        "userstate": userstate,
-                        "message": message,
-                        "self": self
-                    })
-        );
+        this.config.event.forEach((e) => {
+            if (e.enable)
+                this.twitch.on(e.name,
+                    (arg1, arg2, arg3, arg4, arg5, arg6, arg7) => {
+                        if (this.channel === 'allan_walpy' || arg1 === `#${this.channel}`)
+                            this.event(this,
+                                this.makeRequestObj(e.name, [arg1, arg2, arg3, arg4, arg5, arg6, arg7]));
+                    }
+                );
+        });
+    }
+
+    makeRequestObj(event, args) {
+        let result = {};
+        result.event = event;
+        for (let i = 0; i < args.length; i++) {
+            if (args[i])
+                result[`arg${i}`] = args[i];
+        }
+        return result;
     }
 
     start() {
@@ -42,7 +52,7 @@ class Chat {
     }
 
     send(message) {
-        this.receiver.forEach(x => x.receive(message));
+        this.receiver.forEach(x => x.receive(`\`\`\`${message}\`\`\``));
     }
 
     subscribe(receiver) {

@@ -194,6 +194,10 @@
                             "position": 2
                         },
                         {
+                            "event": "message",
+                            "position": 2
+                        },
+                        {
                             "event": "resub",
                             "position": 5
                         },
@@ -211,15 +215,43 @@
                 "badge": {
                     "list": [
                         "broadcaster",
-                        "subscriber"
+                        "subscriber",
+                        "cheer"
                     ],
                     "broadcaster": {
-                        "emoji": "🕹",
+                        "emojie": "🕹",
                         "template": "{emojie}"
                     },
                     "subscriber": {
-                        "emoji": "💵",
-                        "template": "{data.digit[Math.floor(value / 10)]}{data.digit[value % 10]}{emojie}",
+                        "emojie": "💵",
+                        "template": "{addition}{emojie}",
+                        "count": "{0}{1}",
+                        "base": 10,
+                        "digit": [
+                            "0⃣",
+                            "1⃣",
+                            "2⃣",
+                            "3⃣",
+                            "4⃣",
+                            "5⃣",
+                            "6⃣",
+                            "7⃣",
+                            "8⃣",
+                            "9⃣"
+                        ]
+                    },
+                    "cheer": {
+                        "emojie": "💎",
+                        "template": "{addition}{emojie}",
+                        "count": "{0}{1}",
+                        "base": 10,
+                        "shorten": [
+                            {
+                                "label" : "k",
+                                "count" : 3,
+                                "pattern": "{0}{1}"
+                            }
+                        ],
                         "digit": [
                             "0⃣",
                             "1⃣",

@@ -1,4 +1,5 @@
-const config = require('../../config/config.json').config.parser.user;
+const common = require('../core/common.js');
+const config = require('../../config/bot.json').config.parser.user;
 
 class User {
 
@@ -14,17 +15,17 @@ class User {
     parse_state_findPosition() {
         let self = this;
         let positions = config.state.arg;
-        let result = config.state.arg.none;
+        let result = config.state.none;
         positions.forEach((position) => {
             if (position.event === self.data.event)
-                result = position;
+                result = position.position;
         });
         return result;
     }
 
     parse_state_getUserstate() {
         let arg_position = this.parse_state_findPosition();
-        if (arg_position === config.state.arg.none)
+        if (arg_position === config.state.none)
             return null;
         return this.data[`arg${arg_position}`];
     }
@@ -34,6 +35,15 @@ class User {
         if (!this.data.userstate)
             return;
         this.parse_state_badge();
+    }
+
+    parse_state_badge_uniqParse(conf) {
+        let parser = ((conf) => conf);
+        try {
+            let parser_require = require(`./badge/${conf.name}.js`);
+            parser = parser_require;
+        } catch (e) { }
+        return parser(conf);
     }
 
     parse_state_badge() {
@@ -46,15 +56,15 @@ class User {
             if (value === undefined || value === null)
                 return;
             let conf = badges_config[badge];
+            conf.name = badge;
+            conf.value = value;
+
+            conf = this.parse_state_badge_uniqParse(conf);
+
             this.badge.push(
-                conf.template.format({
-                    "emojie": conf.emojie,
-                    "config": conf,
-                    "value": value
-                })
+                conf.template.format(conf)
             );
         });
-        // "subscriber": "12"
     }
 
 }

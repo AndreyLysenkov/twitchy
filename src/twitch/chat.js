@@ -55,11 +55,24 @@ class Chat {
         if (!channel || (Chat.channel.indexOf(channel) < 0))
             channel = config.status;
 
+        let data = {
+            "event": event_name,
+            "argument": arguments
+        };
+
+        let parser = require('../parse/message.js');
+        let parsed = new parser(data);
+        parsed.parse();
+
+        let badges = "";
+        if (parsed.user && parsed.user.badge) {
+            parsed.user.badge.forEach((badge) => {
+                badges += badge;
+            });
+        }
+
         Chat.send(channel,
-            `\`\`\`\n${JSON.stringify({
-                "event": event_name,
-                "args": arguments
-            }, null, 4)}\n\`\`\``);
+            `badges: ${badges}\`\`\`\n${JSON.stringify(data, null, 4)}\n\`\`\``);
     }
 
 }

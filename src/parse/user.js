@@ -14,7 +14,7 @@ class User {
 
     parse_state_findPosition() {
         let self = this;
-        let positions = config.state.arg;
+        let positions = config.state.argument;
         let result = config.state.none;
         positions.forEach((position) => {
             if (position.event === self.data.event)
@@ -27,7 +27,8 @@ class User {
         let arg_position = this.parse_state_findPosition();
         if (arg_position === config.state.none)
             return null;
-        return this.data[`arg${arg_position}`];
+        // TODO; positions;
+        return this.data.argument[arg_position];
     }
 
     parse_state() {

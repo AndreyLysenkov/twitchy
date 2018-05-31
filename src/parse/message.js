@@ -8,9 +8,11 @@ class Message {
         this.user = this.parse_user();
     }
 
-    parse_user_badges() {
+    parse_user() {
         let parser = require('./user.js');
-        return parser.parse(this.data);
+        let result = new parser(this.data);
+        result.parse();
+        return result;
     }
 
 }

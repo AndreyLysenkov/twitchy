@@ -180,7 +180,7 @@
         "parser": {
             "user": {
                 "state": {
-                    "arg": [
+                    "argument": [
                         {
                             "event": "action",
                             "position": 2

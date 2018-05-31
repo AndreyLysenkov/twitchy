@@ -1,64 +1,79 @@
-const twitch = require('tmi.js').client;
+const twitch = require('tmi.js');
+
+const token = require('../../config/token.json').twitch;
+const config = require('../../config/bot.json').twitch;
 
 class Chat {
 
-    constructor(channel, config, token, log) {
-        this.channel = channel;
-        this.config = config;
-        this.log = log;
-        this.receiver = [];
+    static subscribe(channel, receiver) {
+        if (!channel)
+            channel = config.status;
+        if (!channel.startsWith('#'))
+            channel = `#${channel}`;
+        Chat.add_channel(channel);
+        Chat.add_receiver(channel, receiver);
+    }
 
-        if (!this.config)
-            this.config = {};
-        if (!this.config.tmi)
-            this.config.tmi = {};
-        if (token)
-            this.config.tmi.identity = token;
+    static add_channel(channel) {
+        if (channel === config.status)
+            return;
+        if (Chat.channel.indexOf(channel) < 0)
+            Chat.channel.push(channel);
+    }
 
-        //this.config.tmi.logger = this.log;
-        this.config.channel = [this.channel];
+    static add_receiver(channel, receiver) {
+        if (!Chat.receiver[channel])
+            Chat.receiver[channel] = [];
+        Chat.receiver[channel].push(receiver);
+    }
 
-        this.twitch = new twitch(this.config.tmi);
+    static send(channel, message) {
+        Chat.receiver[channel].forEach(
+            (receiver) => receiver.receive(message));
+    }
 
-        this.config.event.forEach((e) => {
+    static connect() {
+        Chat.twitch = new twitch.client(Chat.config.tmi);
+        Chat.event_register();
+        Chat.twitch.connect();
+    }
+
+    static event_register() {
+        Chat.config.event.forEach((e) => {
             if (e.enable)
-                this.twitch.on(e.name,
+                Chat.twitch.on(e.name,
                     (arg1, arg2, arg3, arg4, arg5, arg6, arg7) => {
-                        if (this.channel === 'allan_walpy' || arg1 === `#${this.channel}`)
-                            this.event(this,
-                                this.makeRequestObj(e.name, [arg1, arg2, arg3, arg4, arg5, arg6, arg7]));
+                        Chat.event(e.name, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
                     }
                 );
         });
     }
 
-    makeRequestObj(event, args) {
-        let result = {};
-        result.event = event;
-        for (let i = 0; i < args.length; i++) {
-            if (args[i])
-                result[`arg${i}`] = args[i];
-        }
-        return result;
-    }
-
-    start() {
-        this.twitch.connect();
-    }
-
-    event(chat, message) {
+    static event(event_name) {
         // tmp; TODO;
-        chat.send(JSON.stringify(message, null, 4));
-    }
+        let channel = arguments[1];
+        if (!channel || (Chat.channel.indexOf(channel) < 0))
+            channel = config.status;
 
-    send(message) {
-        this.receiver.forEach(x => x.receive(`\`\`\`${message}\`\`\``));
-    }
-
-    subscribe(receiver) {
-        this.receiver.push(receiver);
+        Chat.send(channel,
+            `\`\`\`\n${JSON.stringify({
+                "event": event_name,
+                "args": arguments
+            }, null, 4)}\n\`\`\``);
     }
 
 }
+
+Chat.receiver = {};
+Chat.channel = [];
+Chat.config = config;
+
+if (!Chat.config.tmi)
+    Chat.config.tmi = {};
+Chat.config.tmi.logger = console;
+
+Chat.config.tmi.channels = Chat.channel;
+if (token)
+    Chat.config.tmi.identity = token;
 
 module.exports = Chat;

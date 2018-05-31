@@ -16,23 +16,23 @@ bot.addLogReceiver(log, config.log.console.level);
 bot.config.token = token;
 
 /// tmp zone
-/// 338714704002285568 - guild
-/// 402156171194269706 - channel
 bot.login().then(() => {
     const twitch = require('./twitch/chat.js');
     let discord_channel = require('./discord/chat.js');
 
-    /// me
-    let channel = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
-    let chat = new twitch('allan_walpy', bot.config.twitch, token.twitch, log, []);
-    chat.subscribe(channel, channel.send);
-    chat.start();
+    //service
+    let channel0 = new discord_channel(bot.client, `338714704002285568`, `402156171194269706`);
+    twitch.subscribe('#status#', channel0);
 
-    /// vultr jack
+    /// me
+    let channel = new discord_channel(bot.client, `338714704002285568`, `451538129409802270`);
+    twitch.subscribe('allan_walpy', channel);
+
+    /// jack-test
     let channel2 = new discord_channel(bot.client, `338714704002285568`, `353195227558838275`);
-    let chat2 = new twitch('jackshepardtwitch', bot.config.twitch, token.twitch, log, []);
-    chat2.subscribe(channel2, channel2.send);
-    chat2.start();
+    twitch.subscribe('jackshepardtwitch', channel2);
+
+    twitch.connect();
 });
 
 module.exports = bot;

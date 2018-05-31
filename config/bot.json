@@ -13,9 +13,6 @@
         }
     },
     "twitch": {
-        "register": {
-            "statusChannel": "#status#"
-        },
         "event": [
             {
                 "name": "action",
@@ -139,7 +136,7 @@
             }
         ],
         "tmi": {
-            "option": {
+            "options": {
                 "debug": true
             },
             "connection": {
@@ -151,12 +148,9 @@
                 "reconnectInterval": 1000,
                 "secure": true,
                 "timeout": 5000
-            },
-            "channels": [
-                "allan_walpy",
-                "jackshepardtwitch"
-            ]
+            }
         },
-        "maxReconnection" : 15
+        "maxReconnection" : 15,
+        "status": "#status#"
     }
 }

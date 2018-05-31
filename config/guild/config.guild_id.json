@@ -1,5 +1,5 @@
 {
-    "channel": [
+    "channels": [
         {
             "twitch": "twitch_channel_name",
             "discord": "discord_channel_id"

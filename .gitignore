@@ -4,6 +4,9 @@ token.json
 # stuff
 package-lock.json
 
+# guilds configs
+config/guild/*
+
 # Logs
 logs
 *.log

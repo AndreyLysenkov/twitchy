@@ -150,7 +150,30 @@
                 "timeout": 5000
             }
         },
+        "channels": [
+            "#status#",
+            "allan_walpy",
+            "jackshepardtwitch"
+        ],
         "maxReconnection" : 15,
         "status": "#status#"
+    },
+    "config": {
+        "guild": {
+            "file": { 
+                "name": "config/guild/config.{id}.json",
+                "options": {
+                    "onCreate": {
+                        "encoding": "utf8"
+                    },
+                    "onRewrite": {
+                        "encoding": "utf8"
+                    }
+                },
+                "content": {
+                    "channels": []
+                }
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ package-lock.json
 
 # guilds configs
 config/guild/*
+!config/guild/config.guild_id.json
 
 # Logs
 logs

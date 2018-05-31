@@ -1,6 +1,6 @@
 {
     "name": "twitchy",
-    "version": "0.1.0-zero",
+    "version": "0.2.0-alfa",
     "license": "MIT",
     "description": "log twitch chat to discord chat",
     "keywords": [

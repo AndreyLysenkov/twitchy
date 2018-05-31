@@ -4,7 +4,7 @@ const discord_channel = require('../discord/chat.js');
 const bot = require('../bot.js');
 const client = bot.client;
 
-bot.twitch = require('./twitch/chat.js');
+bot.twitch = require('../twitch/chat.js');
 
 let guilds = client.guilds;
 

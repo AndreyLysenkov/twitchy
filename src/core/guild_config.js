@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const common = require('common.js');
+const common = require('./common.js');
 
-const config = require('../../config/bot.json').guild;
+const config = require('../../config/bot.json').config.guild;
 
 class GuildConfig {
 
@@ -11,6 +11,8 @@ class GuildConfig {
         this.filename = config.file.name.format({
             'id': this.guildId
         });
+        this.filename = `config/${this.filename}`;
+        // TODO; fix that up there;
         this.config = this.get();
     }
 
@@ -24,7 +26,7 @@ class GuildConfig {
     }
 
     require() {
-        return require(this.filename);
+        return require(`../../${this.filename}`);
     }
 
     get() {
@@ -41,9 +43,9 @@ class GuildConfig {
     write(options) {
         if (!options)
             options = config.file.options.onRewrite;
-        fs.writeFile(
-            this.getFilename(), 
-            JSON.stringify(config.file.content), 
+        fs.writeFileSync(
+            `./${this.filename}`, 
+            JSON.stringify(this.config, null, config.file.spaces), 
             options);
     }
 

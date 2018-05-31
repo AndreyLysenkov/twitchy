@@ -2,7 +2,6 @@ const discord = require('discord.js');
 
 const LogReceiver = require('./logReceiver.js');
 
-
 class Bot {
 
     constructor(config, method, level) {

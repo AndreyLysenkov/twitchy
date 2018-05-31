@@ -161,15 +161,17 @@
     "config": {
         "guild": {
             "file": { 
-                "name": "config/guild/config.{id}.json",
+                "name": "guild/config.{id}.json",
                 "options": {
                     "onCreate": {
-                        "encoding": "utf8"
+                        "encoding": "utf8",
+                        "flag": "w"
                     },
                     "onRewrite": {
                         "encoding": "utf8"
                     }
                 },
+                "spaces": 4,
                 "content": {
                     "channels": []
                 }

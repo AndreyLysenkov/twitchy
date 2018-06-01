@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const common = require('./common.js');
+const common = require('../core.js');
 
 const config = require('../../config/bot.json').config.guild;
 

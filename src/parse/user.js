@@ -1,4 +1,4 @@
-const common = require('../core/common.js');
+const common = require('../core.js');
 const config = require('../../config/bot.json').config.parser.user;
 
 class User {

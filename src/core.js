@@ -12,7 +12,10 @@ const private_config_file = process.env.npm_package_config_private_config_file;
 class Core {
 
     static start() {
-        
+        // set log receivers;
+        Core.logger.type = {};
+        Core.logger.type.console = require('./log/receiver/console.js');
+        Core.logger.core.subscribe(new Core.logger.type.console());
     }
 
 }
@@ -37,5 +40,17 @@ Core.config = {
     }
 };
 Core.config.token = Core.config.private.token;
+
+// set logger;
+Core.logger = {};
+Core.logger.core = require('./log/core.js');
+
+// set short refs to logger;
+Core.verbose = Core.logger.core.verbose;
+Core.debug = Core.logger.core.debug;
+Core.log = Core.logger.core.log;
+Core.warn = Core.logger.core.warn;
+Core.error = Core.logger.core.error;
+
 
 module.exports = Core;

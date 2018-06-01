@@ -31,15 +31,25 @@ class Logger {
         };
         if (error)
             log.error = error;
-        Logger.receivers.forEach((receiver) => receiver.receive(log));
+        Logger.receivers[level].forEach((receiver) => receiver.receive(log));
     }
 
-    static subscribe(receiver) {
-        Logger.receivers.push(receiver);
+    static subscribe(levels, receiver) {
+        levels.forEach((level) => {
+            if (!Logger.receivers[level])
+                Logger.receivers[level] = [];
+            Logger.receivers[level].push(receiver);            
+        });
     }
 
 }
 
-Logger.receivers = [];
+Logger.receivers = {
+    verbose: [],
+    debug: [],
+    main: [],
+    warn: [],
+    error: []
+};
 
 module.exports = Logger;

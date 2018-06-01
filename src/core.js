@@ -11,11 +11,31 @@ const private_config_file = process.env.npm_package_config_private_config_file;
 
 class Core {
 
-    static start() {
-        // set log receivers;
+    static register_logger_receiver_types() {
         Core.logger.type = {};
-        Core.logger.type.console = require('./log/receiver/console.js');
-        Core.logger.core.subscribe(new Core.logger.type.console());
+        let types = Core.config.main.log.receiver.list;
+
+        types.forEach((type) => {
+            Core.logger.type[type] = require(`./log/receiver/${type}.js`);
+        });
+    }
+
+    static register_logger_receiver_items() {
+        let items = Core.config.main.log.list;
+        
+        items.forEach((item) => {
+            let type = Core.logger.type[item.type];
+            Core.logger.core.subscribe(item.levels, new type(item.options));
+        });
+    }
+
+    static register_logger_receiver() {
+        Core.register_logger_receiver_types();
+        Core.register_logger_receiver_items();
+    }
+
+    static start() {
+        Core.register_logger_receiver();
     }
 
 }

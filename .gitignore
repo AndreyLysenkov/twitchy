@@ -1,12 +1,12 @@
 # confidetial info
-token.json
+private.json
 
 # stuff
 package-lock.json
 
 # guilds configs
-config/guild/*
-!config/guild/config.guild_id.json
+data/guild/*
+!data/guild/config.guild_id.json
 
 # Logs
 logs

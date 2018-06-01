@@ -1,14 +1,15 @@
 {
     "log": {
         "level": {
-            "debug": 0,
-            "warn": 5,
-            "error": 10,
-            "basic": 13
+            "verbose" : 0,
+            "debug": 1,
+            "main": 2,
+            "warn": 3,
+            "error": 4
         },
-        "message": {
-            "login": {
-                "discord": "I am online"
+        "receiver": {
+            "console": {
+                "template": "{time}>{module}.{level}>{message}"
             }
         }
     },
@@ -92,7 +93,7 @@
             },
             {
                 "name": "roomstate",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "reconnect",

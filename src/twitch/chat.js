@@ -85,7 +85,13 @@ Chat.config = config;
 
 if (!Chat.config.tmi)
     Chat.config.tmi = {};
-Chat.config.tmi.logger = console;
+
+// TODO;
+Chat.config.tmi.logger = {
+    info: (msg) => core.verbose('app.twitch', msg),
+    warn: (msg) => core.warn('app.twitch', msg),
+    error: (msg) => core.error('app.twitch', msg)
+};
 
 Chat.config.tmi.channels = Chat.channel;
 if (token)

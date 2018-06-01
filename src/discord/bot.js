@@ -15,12 +15,13 @@ class DiscordBot {
     set_logger() {
         let self = this;
         this.config.log.list.forEach((e) => {
-            self.client.on(e.event, (message) => DiscordBot.log(e.level, message));
+            self.client.on(e.event, 
+                (message) => DiscordBot.log(e.level, self.config.log.module, message));
         });
     }
 
-    static log(level, message) {
-        core.logger.send(level, this.config.log.module, message);
+    static log(level, _module, message) {
+        core.logger.core.send(level, _module, message);
     }
 
     start() {

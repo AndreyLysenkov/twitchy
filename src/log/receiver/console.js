@@ -1,4 +1,4 @@
-const core = require('../../../core.js');
+const core = require('../../core.js');
 
 const chalk = require('chalk');
 

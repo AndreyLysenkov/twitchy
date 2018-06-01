@@ -5,8 +5,7 @@ private.json
 package-lock.json
 
 # guilds configs
-data/guild/*
-!data/guild/config.guild_id.json
+data/guild/config.[0-9]*.json
 
 # Logs
 logs

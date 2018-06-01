@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const common = require('../core.js');
+const core = require('../core.js');
 
-const config = require('../../config/bot.json').config.guild;
+const config = core.config.main.config.guild;
 
 class GuildConfig {
 
@@ -11,7 +11,7 @@ class GuildConfig {
         this.filename = config.file.name.format({
             'id': this.guildId
         });
-        this.filename = `config/${this.filename}`;
+        this.filename = `data/${this.filename}`;
         // TODO; fix that up there;
         this.config = this.get();
     }

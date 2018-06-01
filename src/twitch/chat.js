@@ -1,7 +1,9 @@
 const twitch = require('tmi.js');
 
-const token = require('../../config/token.json').twitch;
-const config = require('../../config/bot.json').twitch;
+const core = require('../core.js');
+
+const token = core.config.token.twitch;
+const config = core.config.main.twitch;
 
 class Chat {
 

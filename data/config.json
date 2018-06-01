@@ -50,6 +50,25 @@
             }
         }
     },
+    "discord": {
+        "log": {
+            "list": [
+                {
+                    "event": "debug",
+                    "level": "verbose"
+                },
+                {
+                    "event": "warn",
+                    "level": "warn"
+                },
+                {
+                    "event": "error",
+                    "level": "error"
+                }
+            ],
+            "module": "app.discord"
+        }
+    },
     "twitch": {
         "event": [
             {

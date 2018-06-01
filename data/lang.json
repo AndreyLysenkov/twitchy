@@ -1,3 +1,8 @@
 {
-    
+    "log": {
+        "token": {
+            "discord": "---hidden-discord-botty-token---",
+            "twitch": "---hidden-twitch-botty-token---"
+        }
+    }
 }

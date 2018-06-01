@@ -1,7 +1,7 @@
 {
     "log": {
         "level": {
-            "verbose" : 0,
+            "verbose": 0,
             "debug": 1,
             "main": 2,
             "warn": 3,
@@ -9,7 +9,44 @@
         },
         "receiver": {
             "console": {
-                "template": "{time}>{module}.{level}>{message}"
+                "template": {
+                    "main": {
+                        "content": "[{time_formatted}] > [{module}.{level}] > {message}",
+                        "line": " >> {line}",
+                        "skip": 1,
+                        "split": "\n"
+                    },
+                    "error": {
+                        "content": "[{time_formatted}] > [{module}.{level}] > {message} >\n{error_formatted}",
+                        "line": " >> {line}",
+                        "skip": 1,
+                        "split": "\n",
+                        "spaces": 4
+                    }
+                },
+                "time_format": "YYYY-MM-DD>HH:mm:ss.SSS",
+                "style": {
+                    "verbose": [
+                        "bgBlue",
+                        "black"
+                    ],
+                    "debug": [
+                        "bgBlue",
+                        "white"
+                    ],
+                    "main": [
+                        "bgWhite",
+                        "black"
+                    ],
+                    "warn": [
+                        "bgYellow",
+                        "black"
+                    ],
+                    "error": [
+                        "bgRed",
+                        "white"
+                    ]
+                }
             }
         }
     },
@@ -156,12 +193,12 @@
             "allan_walpy",
             "jackshepardtwitch"
         ],
-        "maxReconnection" : 15,
+        "maxReconnection": 15,
         "status": "#status#"
     },
     "config": {
         "guild": {
-            "file": { 
+            "file": {
                 "name": "guild/config.{id}.json",
                 "options": {
                     "onCreate": {
@@ -248,8 +285,8 @@
                         "base": 10,
                         "shorten": [
                             {
-                                "label" : "k",
-                                "count" : 3,
+                                "label": "k",
+                                "count": 3,
                                 "pattern": "{0}{1}"
                             }
                         ],

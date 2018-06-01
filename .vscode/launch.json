@@ -1,12 +1,18 @@
 {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "launch botty",
-                "useWSL": false,
-                "program": "${workspaceRoot}\/src\/main.js"
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "botty",
+            "program": "${workspaceRoot}\/src\/main.js",
+            "env": {
+                "npm_package_config_data_directory": "data",
+                "npm_package_config_guild_config_directory": "guild",
+                "npm_package_config_lang_file": "lang.json",
+                "npm_package_config_config_file": "config.json",
+                "npm_package_config_private_config_file": "private.json"
             }
-        ]
-    }
+        }
+    ]
+}

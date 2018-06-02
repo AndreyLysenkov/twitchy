@@ -110,6 +110,11 @@ class TwitchBot {
             result += " ];\n";
         }
 
+        // add username;
+        if (entry.user.name) {
+            result += "\nusername: {display} [{id}]\n".format(entry.user.name);
+        }
+
         return result;
     }
 

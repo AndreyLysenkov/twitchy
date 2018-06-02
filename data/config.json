@@ -303,10 +303,15 @@
                 "list": [
                     "broadcaster",
                     "subscriber",
-                    "cheer"
+                    "cheer",
+                    "moderator"
                 ],
                 "broadcaster": {
                     "emojie": "🕹",
+                    "template": "{emojie}"
+                },
+                "moderator": {
+                    "emojie": "🛡",
                     "template": "{emojie}"
                 },
                 "subscriber": {

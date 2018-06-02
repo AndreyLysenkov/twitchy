@@ -85,6 +85,44 @@
         }
     },
     "twitch": {
+        "client": {
+            "options": {
+                "debug": true
+            },
+            "connection": {
+                "port": 443,
+                "reconnect": true,
+                "maxReconnectAttempts": 20,
+                "maxReconnectInterval": 30000,
+                "reconnectDecay": 1.75,
+                "reconnectInterval": 1000,
+                "secure": true,
+                "timeout": 5000
+            }
+        },
+        "log": {
+            "list": [
+                {
+                    "event": "info",
+                    "level": "verbose"
+                },
+                {
+                    "event": "warn",
+                    "level": "warn"
+                },
+                {
+                    "event": "error",
+                    "level": "error"
+                }
+            ],
+            "module": "app.twitch"
+        },
+        "channels": [
+            "#status#",
+            "#allan_walpy",
+            "#jackshepardtwitch"
+        ],
+        "status": "#status#",
         "event": [
             {
                 "name": "action",
@@ -206,29 +244,7 @@
                 "name": "whisper",
                 "enable": false
             }
-        ],
-        "tmi": {
-            "options": {
-                "debug": true
-            },
-            "connection": {
-                "port": 443,
-                "reconnect": true,
-                "maxReconnectAttempts": 20,
-                "maxReconnectInterval": 30000,
-                "reconnectDecay": 1.75,
-                "reconnectInterval": 1000,
-                "secure": true,
-                "timeout": 5000
-            }
-        },
-        "channels": [
-            "#status#",
-            "allan_walpy",
-            "jackshepardtwitch"
-        ],
-        "maxReconnection": 15,
-        "status": "#status#"
+        ]
     },
     "config": {
         "guild": {

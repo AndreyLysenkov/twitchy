@@ -35,37 +35,10 @@ class User {
         this.data.userstate = this.parse_state_getUserstate();
         if (!this.data.userstate)
             return;
-        this.parse_state_badge();
-    }
-
-    parse_state_badge_uniqParse(conf) {
-        let parser = ((conf) => conf);
-        try {
-            let parser_require = require(`./badge/${conf.name}.js`);
-            parser = parser_require;
-        } catch (e) { }
-        return parser(conf);
-    }
-
-    parse_state_badge() {
-        if (!this.data.userstate.badges)
-            return;
-        let badges = config.badge.list;
-        let badges_config = config.badge;
-        badges.forEach((badge) => {
-            let value = this.data.userstate.badges[badge];
-            if (value === undefined || value === null)
-                return;
-            let conf = badges_config[badge];
-            conf.name = badge;
-            conf.value = value;
-
-            conf = this.parse_state_badge_uniqParse(conf);
-
-            this.badge.push(
-                conf.template.format(conf)
-            );
-        });
+        
+        let BadgeParser = require('./badge.js');
+        this.badge = new BadgeParser(this.data);
+        this.badge.parse();
     }
 
 }

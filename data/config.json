@@ -300,6 +300,7 @@
                 "none": -1
             },
             "badge": {
+                "folder": "badge",
                 "list": [
                     "broadcaster",
                     "subscriber",

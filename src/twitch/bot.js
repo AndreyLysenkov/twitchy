@@ -102,9 +102,9 @@ class TwitchBot {
         entry.parse();
         
         // add badges;
-        if (entry.user && entry.user.badge) {
+        if (entry.user && entry.user.badge && entry.user.badge.list) {
             result += "\nbadges: [ ";
-            entry.user.badge.forEach((badge) => {
+            entry.user.badge.list.forEach((badge) => {
                 result += `, ${badge}`;
             });
             result += " ];\n";

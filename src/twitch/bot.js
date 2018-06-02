@@ -97,14 +97,14 @@ class TwitchBot {
         // TODO; tmp zone; tmp function;
         let result = "\n---\n";
         
-        let MessageParser = require('../parse/message.js');
-        let parser = new MessageParser(data);
-        parser.parse();
+        let EntryParser = require('../parse/entry.js');
+        let entry = new EntryParser(data);
+        entry.parse();
         
         // add badges;
-        if (parser.user && parser.user.badge) {
+        if (entry.user && entry.user.badge) {
             result += "\nbadges: [ ";
-            parser.user.badge.forEach((badge) => {
+            entry.user.badge.forEach((badge) => {
                 result += `, ${badge}`;
             });
             result += " ];\n";

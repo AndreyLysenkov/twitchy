@@ -1,4 +1,4 @@
-class Message {
+class Entry {
 
     constructor(data) {
         this.data = data;
@@ -17,4 +17,4 @@ class Message {
 
 }
 
-module.exports = Message;
+module.exports = Entry;

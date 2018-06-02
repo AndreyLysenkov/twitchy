@@ -359,6 +359,56 @@
                     ]
                 }
             }
+        },
+        "message": {
+            "argument": [
+                {
+                    "event": "action",
+                    "position": 3,
+                    "emojie": true
+                },
+                {
+                    "event": "chat",
+                    "position": 3,
+                    "emojie": true
+                },
+                {
+                    "event": "cheer",
+                    "position": 3,
+                    "emojie": true
+                },
+                {
+                    "event": "message",
+                    "position": 3,
+                    "emojie": true
+                },
+                {
+                    "event": "notice",
+                    "position": 3,
+                    "emojie": false
+                },
+                {
+                    "event": "resub",
+                    "position": 4,
+                    "emojie": true  
+                },
+                {
+                    "event": "subscription",
+                    "position": 4,
+                    "emojie": true
+                },
+                {
+                    "event": "whisper",
+                    "position": 3,
+                    "emojie": true
+                }
+            ],
+            "none": -1
+        },
+        "stringify": {
+            "badge": {
+                "separator": ", "
+            }
         }
     }
 }

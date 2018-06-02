@@ -1,3 +1,6 @@
+const UserParser = require('./user.js');
+const MessageParser = require('./message.js');
+
 class Entry {
 
     constructor(data) {
@@ -6,11 +9,17 @@ class Entry {
 
     parse() {
         this.user = this.parse_user();
+        this.message = this.parse_message();
     }
 
     parse_user() {
-        let parser = require('./user.js');
-        let result = new parser(this.data);
+        let result = new UserParser(this.data);
+        result.parse();
+        return result;
+    }
+
+    parse_message() {
+        let result = new MessageParser(this.data);
         result.parse();
         return result;
     }

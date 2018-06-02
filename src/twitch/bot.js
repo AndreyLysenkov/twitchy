@@ -100,12 +100,21 @@ class TwitchBot {
         return channel;
     }
 
+    event_parse(data) {
+        let EntryParser = require('../parse/entry.js');
+        let entry = new EntryParser(data);
+        entry.parse();
+        return entry;
+    }
+
     event(name) {
         let data = {
             event: name,
             argument: arguments
         };
-        this.send(this.getChannel(data), data);
+        this.send(
+            this.getChannel(data), 
+            this.event_parse(data));
     }
 
     send(channel, message) {

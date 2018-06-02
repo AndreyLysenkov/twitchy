@@ -20,8 +20,8 @@ class User {
     parse() {
         if (!this.data.userstate.badges)
             return;
-        let badges = config.badge.list;
-        let badges_config = config.badge;
+        let badges = config.list;
+        let badges_config = config;
         badges.forEach((badge) => {
             let value = this.data.userstate.badges[badge];
             if (value === undefined || value === null)

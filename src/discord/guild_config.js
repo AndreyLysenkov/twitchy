@@ -2,23 +2,23 @@ const fs = require('fs');
 
 const core = require('../core.js');
 
-const config = core.config.main.config.guild;
+const config = core.config.main.discord.guild;
 
 class GuildConfig {
 
     constructor(guildId) {
+        this.folder = `${core.config.location.directory.main}/${core.config.location.directory.guild}`;
         this.guildId = guildId;
         this.filename = config.file.name.format({
             'id': this.guildId
         });
-        this.filename = `data/${this.filename}`;
-        // TODO; fix that up there;
+        this.filepath = `${this.folder}/${this.filename}`;
         this.config = this.get();
     }
 
     isExist() {
         try {
-            fs.accessSync(this.filename, fs.constants.F_OK | fs.constants.W_OK);
+            fs.accessSync(this.filepath, fs.constants.F_OK | fs.constants.W_OK);
         } catch (e) {
             return false;
         }
@@ -26,7 +26,7 @@ class GuildConfig {
     }
 
     require() {
-        return require(`../../${this.filename}`);
+        return require(`../../${this.filepath}`);
     }
 
     get() {
@@ -44,7 +44,7 @@ class GuildConfig {
         if (!options)
             options = config.file.options.onRewrite;
         fs.writeFileSync(
-            `./${this.filename}`, 
+            `./${this.filepath}`, 
             JSON.stringify(this.config, null, config.file.spaces), 
             options);
     }

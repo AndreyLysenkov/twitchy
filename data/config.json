@@ -82,6 +82,24 @@
                 }
             ],
             "module": "app.discord"
+        },
+        "guild": {
+            "file": {
+                "name": "config.{id}.json",
+                "options": {
+                    "onCreate": {
+                        "encoding": "utf8",
+                        "flag": "w"
+                    },
+                    "onRewrite": {
+                        "encoding": "utf8"
+                    }
+                },
+                "spaces": 4,
+                "content": {
+                    "channels": []
+                }
+            }
         }
     },
     "twitch": {
@@ -247,24 +265,6 @@
         ]
     },
     "config": {
-        "guild": {
-            "file": {
-                "name": "guild/config.{id}.json",
-                "options": {
-                    "onCreate": {
-                        "encoding": "utf8",
-                        "flag": "w"
-                    },
-                    "onRewrite": {
-                        "encoding": "utf8"
-                    }
-                },
-                "spaces": 4,
-                "content": {
-                    "channels": []
-                }
-            }
-        },
         "parser": {
             "user": {
                 "state": {

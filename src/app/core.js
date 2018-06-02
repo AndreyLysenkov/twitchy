@@ -11,7 +11,7 @@ class App {
     }
 
     static onDiscordLogin() {
-        const GuildConfig = require('./guild_config.js');
+        const GuildConfig = require('../discord/guild_config.js');
         const DiscordChannel = require('../discord/chat.js');
 
         let discord_client = App.bot.discord.client;

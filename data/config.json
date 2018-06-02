@@ -264,95 +264,93 @@
             }
         ]
     },
-    "config": {
-        "parser": {
-            "user": {
-                "state": {
-                    "argument": [
+    "parser": {
+        "user": {
+            "state": {
+                "argument": [
+                    {
+                        "event": "action",
+                        "position": 2
+                    },
+                    {
+                        "event": "chat",
+                        "position": 2
+                    },
+                    {
+                        "event": "cheer",
+                        "position": 2
+                    },
+                    {
+                        "event": "message",
+                        "position": 2
+                    },
+                    {
+                        "event": "resub",
+                        "position": 5
+                    },
+                    {
+                        "event": "subscription",
+                        "position": 5
+                    },
+                    {
+                        "event": "whisper",
+                        "position": 2
+                    }
+                ],
+                "none": -1
+            },
+            "badge": {
+                "list": [
+                    "broadcaster",
+                    "subscriber",
+                    "cheer"
+                ],
+                "broadcaster": {
+                    "emojie": "🕹",
+                    "template": "{emojie}"
+                },
+                "subscriber": {
+                    "emojie": "💵",
+                    "template": "{addition}{emojie}",
+                    "count": "{0}{1}",
+                    "base": 10,
+                    "digit": [
+                        "0⃣",
+                        "1⃣",
+                        "2⃣",
+                        "3⃣",
+                        "4⃣",
+                        "5⃣",
+                        "6⃣",
+                        "7⃣",
+                        "8⃣",
+                        "9⃣"
+                    ]
+                },
+                "cheer": {
+                    "emojie": "💎",
+                    "template": "{addition}{emojie}",
+                    "count": "{0}{1}",
+                    "base": 10,
+                    "shorten": [
                         {
-                            "event": "action",
-                            "position": 2
-                        },
-                        {
-                            "event": "chat",
-                            "position": 2
-                        },
-                        {
-                            "event": "cheer",
-                            "position": 2
-                        },
-                        {
-                            "event": "message",
-                            "position": 2
-                        },
-                        {
-                            "event": "resub",
-                            "position": 5
-                        },
-                        {
-                            "event": "subscription",
-                            "position": 5
-                        },
-                        {
-                            "event": "whisper",
-                            "position": 2
+                            "label": "k",
+                            "count": 3,
+                            "pattern": "{0}{1}"
                         }
                     ],
-                    "none": -1
-                },
-                "badge": {
-                    "list": [
-                        "broadcaster",
-                        "subscriber",
-                        "cheer"
-                    ],
-                    "broadcaster": {
-                        "emojie": "🕹",
-                        "template": "{emojie}"
-                    },
-                    "subscriber": {
-                        "emojie": "💵",
-                        "template": "{addition}{emojie}",
-                        "count": "{0}{1}",
-                        "base": 10,
-                        "digit": [
-                            "0⃣",
-                            "1⃣",
-                            "2⃣",
-                            "3⃣",
-                            "4⃣",
-                            "5⃣",
-                            "6⃣",
-                            "7⃣",
-                            "8⃣",
-                            "9⃣"
-                        ]
-                    },
-                    "cheer": {
-                        "emojie": "💎",
-                        "template": "{addition}{emojie}",
-                        "count": "{0}{1}",
-                        "base": 10,
-                        "shorten": [
-                            {
-                                "label": "k",
-                                "count": 3,
-                                "pattern": "{0}{1}"
-                            }
-                        ],
-                        "digit": [
-                            "0⃣",
-                            "1⃣",
-                            "2⃣",
-                            "3⃣",
-                            "4⃣",
-                            "5⃣",
-                            "6⃣",
-                            "7⃣",
-                            "8⃣",
-                            "9⃣"
-                        ]
-                    }
+                    "digit": [
+                        "0⃣",
+                        "1⃣",
+                        "2⃣",
+                        "3⃣",
+                        "4⃣",
+                        "5⃣",
+                        "6⃣",
+                        "7⃣",
+                        "8⃣",
+                        "9⃣"
+                    ]
                 }
             }
         }

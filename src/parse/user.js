@@ -1,5 +1,5 @@
 const core = require('../core.js');
-const config = core.config.main.config.parser.user;
+const config = core.config.main.parser.user;
 
 class User {
 

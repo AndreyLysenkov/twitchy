@@ -93,29 +93,11 @@ class TwitchBot {
         this.add_receiver(channel, receiver);
     }
 
-    event_tmp(data) {
-        // TODO; tmp zone; tmp function;
-        let result = "\n---\n";
-        
-        let EntryParser = require('../parse/entry.js');
-        let entry = new EntryParser(data);
-        entry.parse();
-        
-        // add badges;
-        if (entry.user && entry.user.badge && entry.user.badge.list) {
-            result += "\nbadges: [ ";
-            entry.user.badge.list.forEach((badge) => {
-                result += `, ${badge}`;
-            });
-            result += " ];\n";
-        }
-
-        // add username;
-        if (entry.user.name) {
-            result += "\nusername: {display} [{id}]\n".format(entry.user.name);
-        }
-
-        return result;
+    getChannel(data) {
+        let channel = data.argument[1];
+        if (!channel || !this.isValidChannel(channel))
+            channel = this.config.status;
+        return channel;
     }
 
     event(name) {
@@ -123,14 +105,7 @@ class TwitchBot {
             event: name,
             argument: arguments
         };
-        let channel = data.argument[1];
-        if (!channel || !this.isValidChannel(channel))
-            channel = this.config.status;
-
-        let tmp_addition = this.event_tmp(data);
-
-        // todo;
-        this.send(channel, `adds:${tmp_addition}\n\`\`\`json\n${JSON.stringify(data, null, 4)}\n\`\`\``);
+        this.send(this.getChannel(data), data);
     }
 
     send(channel, message) {

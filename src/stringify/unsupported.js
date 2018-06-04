@@ -1,5 +1,5 @@
 const core = require('../core.js');
-const config = core.config.main.event.id.unsuported;
+const config = core.config.main.stringify.event.id.unsupported;
 
 class UnsupportedEvent {
 
@@ -8,7 +8,8 @@ class UnsupportedEvent {
     }
 
     parse() {
-        return JSON.stringify(entry, null, config.json_space);
+        this.stringified = JSON.stringify(this.entry, null, config.json_space);
+        return config.template.format(this);
     }
 
 }

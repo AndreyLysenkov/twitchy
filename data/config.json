@@ -404,11 +404,7 @@
                 }
             ],
             "none": -1
-        },
-        "stringify": {
-            "badge": {
-                "separator": ", "
-            }
         }
-    }
+    },
+    "stringify": { }
 }

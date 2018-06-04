@@ -21,7 +21,7 @@ module.exports = (data) => {
     }
 
     // tmp zone; still here;
-    //result += `\n\`\`\`json\n${JSON.stringify(data, null, 4)}\n\`\`\`\n`;
+    console.log(JSON.stringify(data, null, 4));
 
     return result;
 };

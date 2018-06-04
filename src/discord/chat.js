@@ -5,7 +5,7 @@ class Chat {
         this.guildId = guildId;
         this.channelId = channelId;
         this.channel = this.client.guilds.get(guildId).channels.get(channelId);
-        this.message_stringify = require('../parse/stringify.js');
+        this.message_stringify = require('../stringify/core.js');
     }
 
     receive(message) {

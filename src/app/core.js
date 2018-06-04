@@ -26,6 +26,8 @@ class App {
                 let channel = new DiscordChannel(discord_client, guild.id, config.discord);
                 App.bot.twitch.subscribe(config.twitch, channel);
             });
+
+            App.bot.discord.emojie.fetch(guild_config);
         });
 
         App.bot.twitch.start();
@@ -50,6 +52,6 @@ App.bot = {
 
 App.bot.discord.client.on("ready", App.onDiscordLogin);
 
-App.bot.discord.emoji = require('../discord/emojie.js');
+App.bot.discord.emojie = require('../discord/emojie.js');
 
 module.exports = App;

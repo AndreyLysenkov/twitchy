@@ -4,7 +4,7 @@ const config = core.config.main.discord.emojie;
 class Emojie {
 
     static fetch_get_guild(guildId) {
-        let guild = core.app.discord.client.guilds.get(guildId);
+        let guild = core.app.bot.discord.client.guilds.get(guildId);
         if (!guild)
             return null;
         return guild.emojis;
@@ -82,6 +82,8 @@ class Emojie {
     }
 
     static replace(content) {
+        if (!content)
+            return content;
         let result = content;
         Emojie.list.forEach((emojie) => {
             result = result.replace(emojie, Emojie.codes[emojie]);
@@ -94,4 +96,4 @@ class Emojie {
 Emojie.list = [];
 Emojie.codes = {};
 
-module.export = Emojie;
+module.exports = Emojie;

@@ -9,7 +9,7 @@ class Chat {
         this.channelId = channelId;
         this.channel = this.client.guilds.get(guildId).channels.get(channelId);
         this.message_stringify = require('../stringify/core.js');
-        this.message_emojie = require('./emoji.js').replace;
+        this.message_emojie = core.app.bot.discord.emojie.replace;
     }
 
 

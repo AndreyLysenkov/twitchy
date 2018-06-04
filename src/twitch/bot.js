@@ -1,5 +1,7 @@
-const core = require('../core.js');
 const twitch = require('tmi.js');
+const moment = require('moment');
+
+const core = require('../core.js');
 
 class TwitchBot {
 
@@ -109,7 +111,8 @@ class TwitchBot {
     event(name) {
         let data = {
             event: name,
-            argument: arguments
+            argument: arguments,
+            time: moment()
         };
         this.send(
             this.getChannel(data), 

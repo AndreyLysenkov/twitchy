@@ -433,7 +433,8 @@
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "{badges} > **{username} {message}**"
+                    "template": "[{time}] {badges} > **{username} {message}**",
+                    "time": "HH:mm:ss"
                 },
                 "chat" : {
                     "path": "message",
@@ -443,7 +444,8 @@
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "{badges} > **{username}** : {message}"
+                    "template": "[{time}] {badges} > **{username}** : {message}",
+                    "time": "HH:mm:ss"
                 }
             }
         }

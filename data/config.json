@@ -100,7 +100,12 @@
                     "channels": []
                 }
             }
-        }
+        },
+        "chat": {
+            "limit": 1800,
+            "template": "{line}"
+        },
+        "regex": "\\[*`~_]\\g"
     },
     "twitch": {
         "client": {
@@ -409,7 +414,8 @@
     "stringify": {
         "event": {
             "list": [
-                "action"
+                "action",
+                "chat"
             ],
             "require": "./{path}.js",
             "id": {
@@ -419,6 +425,16 @@
                     "template": "**unsupported event** \n```json\n{stringified}\n```"
                 },
                 "action" : {
+                    "path": "message",
+                    "badges": {
+                        "separator": ", "
+                    },
+                    "username": {
+                        "template": "{name} [{display}]"
+                    },
+                    "template": "{badges} > **{username} {message}**"
+                },
+                "chat" : {
                     "path": "message",
                     "badges": {
                         "separator": ", "

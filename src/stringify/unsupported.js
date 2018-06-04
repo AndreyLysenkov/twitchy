@@ -1,15 +1,13 @@
-const core = require('../core.js');
-const config = core.config.main.stringify.event.id.unsupported;
-
 class UnsupportedEvent {
 
-    constructor(entry) {
-        this.entry = entry;
+    constructor(config) {
+        this.config = config;
     }
 
-    parse() {
-        this.stringified = JSON.stringify(this.entry, null, config.json_space);
-        return config.template.format(this);
+    parse(entry) {
+        this.entry = entry;
+        this.stringified = JSON.stringify(this.entry, null, this.config.json_space);
+        return this.config.template.format(this);
     }
 
 }

@@ -15,12 +15,12 @@ function requireEvent(event) {
     return require(config.event.require.format(event));
 }
 
-function parseEvent(EventType, entry) {
-    let parser = new EventType(entry);
-    return parser.parse();
+function parseEvent(EventType, event_config, entry) {
+    let parser = new EventType(event_config);
+    return parser.parse(entry);
 }
 
 module.exports = (entry) => {
     let event = getEvent(entry);
-    return parseEvent(requireEvent(event), entry);
+    return parseEvent(requireEvent(event), event, entry);
 };

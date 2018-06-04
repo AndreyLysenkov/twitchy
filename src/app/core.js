@@ -50,4 +50,6 @@ App.bot = {
 
 App.bot.discord.client.on("ready", App.onDiscordLogin);
 
+App.bot.discord.emoji = require('../discord/emojie.js');
+
 module.exports = App;

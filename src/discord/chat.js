@@ -9,6 +9,7 @@ class Chat {
         this.channelId = channelId;
         this.channel = this.client.guilds.get(guildId).channels.get(channelId);
         this.message_stringify = require('../stringify/core.js');
+        this.message_emojie = require('./emoji.js').replace;
     }
 
 
@@ -24,8 +25,10 @@ class Chat {
         return result;
     }
 
-    receive(message) {
-        let content = this.message_stringify(message);
+    receive(entry) {
+        entry.message.content = this.message_emojie(entry.message.content);
+
+        let content = this.message_stringify(entry);
         let lines = this.limit_content(content);
         lines.forEach((line) => this.channel.send(
             config.template.format({

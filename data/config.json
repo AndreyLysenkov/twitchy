@@ -98,13 +98,24 @@
                 },
                 "spaces": 4,
                 "content": {
-                    "channels": []
+                    "channels": [],
+                    "emojie": {
+                        "mode": "whitelist",
+                        "list": []
+                    }
                 }
             }
         },
         "chat": {
             "limit": 1800,
             "template": "{line}"
+        },
+        "emojie": {
+            "mode": {
+                "auto": "auto",
+                "white": "whitelist",
+                "black": "blacklist"
+            }
         },
         "regex": "\\[*`~_]\\g"
     },

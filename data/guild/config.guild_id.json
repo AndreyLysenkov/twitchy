@@ -12,5 +12,18 @@
             "twitch": "#status#",
             "discord": "discord_channel_id_for_bot_status_messages_optional"
         }
-    ]
+    ],
+    "emojie": {
+        "mode": "auto|whitelist|blacklist",
+        "list": [
+            {
+                "name": "twitchEmojieName",
+                "code": "<:DiscordEmojieCode:055488822848>"
+            },
+            {
+                "name": "otherTwitchEmojieName",
+                "code": "<:otherDiscordEmojieCode:055488822848>"
+            }
+        ]
+    }
 }

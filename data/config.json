@@ -390,7 +390,7 @@
                 {
                     "event": "resub",
                     "position": 4,
-                    "emojie": true  
+                    "emojie": true
                 },
                 {
                     "event": "subscription",
@@ -406,5 +406,17 @@
             "none": -1
         }
     },
-    "stringify": { }
+    "stringify": {
+        "event": {
+            "list": [
+            ],
+            "require": "./{path}.js",
+            "id": {
+                "unsupported": {
+                    "path": "unsupported",
+                    "json_space": 4
+                }
+            }
+        }
+    }
 }

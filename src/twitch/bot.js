@@ -79,7 +79,6 @@ class TwitchBot {
             return;
         this.receiver[channel] = [];
         this.channels.push(channel);
-        
     }
 
     add_receiver(channel, receiver) {

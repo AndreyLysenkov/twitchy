@@ -1,27 +1,26 @@
-module.exports = (data) => {
-    // TODO; tmp zone; tmp function;
-    let result = ">";
+const core = require('../core.js');
+const config = core.config.main.stringify;
 
-    // add badges;
-    if (data.user && data.user.badge && data.user.badge.list) {
-        result += "\nbadges: [ ";
-        data.user.badge.list.forEach((badge) => {
-            result += `, ${badge}`;
-        });
-        result += " ];\n";
-    }
+function getEvent(entry) {
+    let event_list = config.event.list;
+    let event = config.event.id[entry.data.event];
 
-    // add username;
-    if (data.user.name) {
-        result += "\nusername: {display} [{id}]\n".format(data.user.name);
-    }
+    if (!config.event.list.includes(event))
+        event = config.event.id.unsupported;
 
-    if (data.message && data.message.content) {
-        result += `\n**${data.message.content}**\n`;
-    }
+    return event;
+}
 
-    // tmp zone; still here;
-    console.log(JSON.stringify(data, null, 4));
+function requireEvent(event) {
+    return require(config.event.require.format(event));
+}
 
-    return result;
+function parseEvent(EventType, entry) {
+    let parser = new EventType(entry);
+    return parser.parse();
+}
+
+module.exports = (entry) => {
+    let event = getEvent(entry);
+    return parseEvent(requireEvent(event), entry);
 };

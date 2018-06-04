@@ -56,6 +56,7 @@ Core.config = {
     }
 };
 Core.config.token = Core.config.private.token;
+Core.config.app = Core.config.main.app;
 
 // set logger;
 Core.logger = {};

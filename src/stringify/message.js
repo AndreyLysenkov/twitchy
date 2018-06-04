@@ -1,3 +1,6 @@
+const core = require('../core.js');
+const tz = require('moment-timezone');
+
 class ActionEvent {
 
     constructor(config) {
@@ -18,7 +21,9 @@ class ActionEvent {
 
     parse_time() {
         let time = this.entry.data.time;
-        return time.format(this.config.time);
+        return time
+            .tz(core.config.app.timezone)
+            .format(this.config.time);
     }
 
     parse(entry) {

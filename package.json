@@ -42,6 +42,7 @@
         "tmi.js": "github:tmijs/tmi.js",
         "string-format": "^2.0.0",
         "moment": "^2.22.1",
+        "moment-timezone": "^0.5.17",
         "chalk": "^2.4.1"
     },
     "devDependencies": {
@@ -52,6 +53,7 @@
         "tmi.js",
         "string-format",
         "moment",
+        "moment-timezone",
         "chalk"
     ],
     "main": "src/main.js",

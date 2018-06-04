@@ -449,5 +449,8 @@
                 }
             }
         }
+    },
+    "app": {
+        "timezone": "Europe/Moscow"
     }
 }

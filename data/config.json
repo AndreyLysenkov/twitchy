@@ -427,7 +427,10 @@
         "event": {
             "list": [
                 "action",
-                "chat"
+                "chat",
+                "hosting",
+                "hosted",
+                "unhost"
             ],
             "require": "./{path}.js",
             "id": {
@@ -444,8 +447,7 @@
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username} {message}**",
-                    "time": "HH:mm:ss"
+                    "template": "[{time}] {badges} > **{username} {message}**"
                 },
                 "chat" : {
                     "path": "message",
@@ -455,13 +457,27 @@
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username}** : {message}",
-                    "time": "HH:mm:ss"
+                    "template": "[{time}] {badges} > **{username}** : {message}"
+                },
+                "hosting": {
+                    "path": "host",
+                    "template": "начал хостить {target} на {viewers} человеков"
+                },
+                "hosted": {
+                    "path": "host",
+                    "template": "{target} начал хостить меня на {viewers} человеков"
+                },
+                "unhost": {
+                    "path": "unhost",
+                    "template": "прекртил хостить на {viewers} человеков"
                 }
             }
         }
     },
     "app": {
-        "timezone": "Europe/Moscow"
+        "time" : {
+            "zone": "Europe/Moscow",
+            "format": "HH:mm:ss"
+        }        
     }
 }

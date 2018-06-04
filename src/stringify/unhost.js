@@ -7,18 +7,6 @@ class ActionEvent {
         this.config = config;
     }
 
-    parse_badges() {
-        return this.entry.user.badge.list.join(this.config.badges.separator);
-    }
-
-    parse_username() {
-        return this.config.username.template.format(this.entry.user.name);
-    }
-
-    parse_message() {
-        return this.entry.message.content;
-    }
-
     parse_time() {
         let time = this.entry.data.time;
         return time
@@ -26,13 +14,16 @@ class ActionEvent {
             .format(core.config.app.time.format);
     }
 
+    parse_viewers() {
+        return this.entry.data.argument[2];
+    }
+
     parse(entry) {
         this.entry = entry;
         
         this.time = this.parse_time();
-        this.badges = this.parse_badges();
-        this.username = this.parse_username();
-        this.message = this.parse_message();
+        this.target = this.parse_target();
+        this.viewers = this.parse_viewers();
 
         return this.config.template.format(this);
     }

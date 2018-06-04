@@ -22,7 +22,6 @@ class ActionEvent {
         this.entry = entry;
         
         this.time = this.parse_time();
-        this.target = this.parse_target();
         this.viewers = this.parse_viewers();
 
         return this.config.template.format(this);

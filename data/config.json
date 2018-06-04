@@ -409,6 +409,7 @@
     "stringify": {
         "event": {
             "list": [
+                "action"
             ],
             "require": "./{path}.js",
             "id": {
@@ -416,6 +417,16 @@
                     "path": "unsupported",
                     "json_space": 4,
                     "template": "**unsupported event** \n```json\n{stringified}\n```"
+                },
+                "action" : {
+                    "path": "message",
+                    "badges": {
+                        "separator": ", "
+                    },
+                    "username": {
+                        "template": "{name} [{display}]"
+                    },
+                    "template": "{badges} > **{username}** : {message}"
                 }
             }
         }

@@ -63,7 +63,8 @@
                     "error"
                 ]
             }
-        ]
+        ],
+        "module": "app.main"
     },
     "discord": {
         "log": {

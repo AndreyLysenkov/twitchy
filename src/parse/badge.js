@@ -11,9 +11,11 @@ class User {
     parse_one(conf) {
         let parser = ((conf) => conf);
         try {
-            let parser_require = require(`./${config.folder}}/${conf.name}.js`);
+            let parser_require = require(`./${config.folder}/${conf.name}.js`);
             parser = parser_require;
-        } catch (e) { }
+        } catch (e) {
+            core.verbose(core.config.main.log.module, `found none specific ./parse/badge/${conf.name}`, e);
+        }
         return parser(conf);
     }
 

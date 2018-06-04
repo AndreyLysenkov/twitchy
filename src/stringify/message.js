@@ -5,7 +5,7 @@ class ActionEvent {
     }
 
     parse_badges() {
-        return this.entry.user.badge.list.join(this.config.badges.separator);;
+        return this.entry.user.badge.list.join(this.config.badges.separator);
     }
 
     parse_username() {

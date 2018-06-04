@@ -1,7 +1,3 @@
-// add string.format(); method from 'string-format' package;
-const format = require('string-format');
-format.extend(String.prototype, {});
-
 // load enviroment variables;
 const data_directory = process.env.npm_package_config_data_directory;
 const guild_config_directory = process.env.npm_package_config_guild_config_directory;
@@ -72,5 +68,10 @@ Core.log = Core.logger.core.log;
 Core.warn = Core.logger.core.warn;
 Core.error = Core.logger.core.error;
 
+// add string.format(); method from 'string-format' package;
+const format = require('string-format');
+format.extend(String.prototype, {
+    discord_escape: s => s.replace(Core.config.main.discord.escape, c => '\\' + c)
+});
 
 module.exports = Core;

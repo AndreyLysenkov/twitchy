@@ -429,6 +429,7 @@
                 "action",
                 "ban",
                 "chat",
+                "cheer",
                 "connecting",
                 "connected",
                 "disconnected",
@@ -463,6 +464,16 @@
                         "template": "{name} [{display}]"
                     },
                     "template": "[{time}] {badges} > **{username}** : {message}"
+                },
+                "cheer" : {
+                    "path": "message",
+                    "badges": {
+                        "separator": ", "
+                    },
+                    "username": {
+                        "template": "{name} [{display}]"
+                    },
+                    "template": "[{time}] {badges} > **{username}** cheer : {message}"
                 },
                 "hosting": {
                     "path": "host",

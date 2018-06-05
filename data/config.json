@@ -473,7 +473,7 @@
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username}** cheer : {message}"
+                    "template": "[{time}] {badges} > **{username}** 💎cheer💎 : {message}"
                 },
                 "hosting": {
                     "path": "host",
@@ -506,6 +506,10 @@
                 "ban": {
                     "path": "ban",
                     "template": "[{time}] > **{user}** banned for *{reason}*"
+                },
+                "clearchat": {
+                    "path": "ban",
+                    "template": "[{time}] > **chat has been cleared**"
                 }
             }
         }

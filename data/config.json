@@ -437,6 +437,7 @@
                 "hosting",
                 "hosted",
                 "logon",
+                "timeout",
                 "unhost"
             ],
             "require": "./{path}.js",
@@ -510,7 +511,8 @@
                 },
                 "timeout": {
                     "path": "ban",
-                    "template": "[{time}] > **{user}** timeout for `{duration}` 'cause of *{reason}*"
+                    "template": "[{time}] > **{user}** timeout for `{duration}` 'cause of *{reason}*",
+                    "unit": "seconds"
                 },
                 "clearchat": {
                     "path": "ban",

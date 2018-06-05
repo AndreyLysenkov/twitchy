@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 const core = require('../core.js');
 const tz = require('moment-timezone');
 
@@ -15,26 +17,26 @@ class ActionEvent {
     }
 
     parse_reason() {
+        return this.entry.data.argument[3];
+    }
+
+    parse_user() {
         return this.entry.data.argument[2];
     }
 
-    parse_username() {
-        return this.entry.data.argument[1];
-    }
-
     parse_duration() {
-        let time = this.entry.data.argument[3];
+        let time = this.entry.data.argument[4];
         if (!time)
             return null;
-        // TODO;
-        return time;
+        let m = moment.duration(time, this.config.unit);
+        return m.humanize();
     }
 
     parse(entry) {
         this.entry = entry;
         
         this.time = this.parse_time();
-        this.username = this.parse_username();
+        this.user = this.parse_user();
         this.reason = this.parse_reason();
         this.duration = this.parse_duration();
 

@@ -445,7 +445,7 @@
                 "unsupported": {
                     "path": "unsupported",
                     "json_space": 4,
-                    "template": "**unsupported event** \n```json\n{stringified}\n```"
+                    "template": "[{time}] > **unsupported event** \n```json\n{stringified}\n```"
                 },
                 "action" : {
                     "path": "message",
@@ -498,7 +498,7 @@
                     "template": "[{time}] > *connected to `{adress}` throught `{port}` port*"
                 },
                 "logon": {
-                    "path": "connection",
+                    "path": "main",
                     "template": "[{time}] > *log in to twitch*"
                 },
                 "disconnected": {
@@ -515,7 +515,7 @@
                     "unit": "seconds"
                 },
                 "clearchat": {
-                    "path": "ban",
+                    "path": "main",
                     "template": "[{time}] > **chat has been cleared**"
                 }
             }

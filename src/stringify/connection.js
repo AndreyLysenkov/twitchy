@@ -22,12 +22,17 @@ class ActionEvent {
         return this.entry.data.argument[2];
     }
 
+    parse_reason() {
+        return this.entry.data.argument[1];
+    }
+
     parse(entry) {
         this.entry = entry;
         
         this.time = this.parse_time();
         this.adress = this.parse_adress();
         this.port = this.parse_port();
+        this.reason = this.parse_reason();
 
         return this.config.template.format(this);
     }

@@ -430,6 +430,7 @@
                 "chat",
                 "connecting",
                 "connected",
+                "disconnected",
                 "hosting",
                 "hosted",
                 "logon",
@@ -476,15 +477,19 @@
                 },
                 "connecting": {
                     "path": "connection",
-                    "template": " > *connecting to `{adress}` throught `{port}` port*"
+                    "template": "[{time}] > *connecting to `{adress}` throught `{port}` port*"
                 },
                 "connected": {
                     "path": "connection",
-                    "template": " > *connected to `{adress}` throught `{port}` port*"
+                    "template": "[{time}] > *connected to `{adress}` throught `{port}` port*"
                 },
                 "logon": {
                     "path": "connection",
-                    "template": " > *log in to twitch*"
+                    "template": "[{time}] > *log in to twitch*"
+                },
+                "disconnected": {
+                    "path": "connection",
+                    "template": "[{time}] > **disconnected: {reason}**"
                 }
             }
         }

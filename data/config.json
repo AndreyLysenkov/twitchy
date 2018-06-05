@@ -427,6 +427,7 @@
         "event": {
             "list": [
                 "action",
+                "ban",
                 "chat",
                 "connecting",
                 "connected",
@@ -490,6 +491,10 @@
                 "disconnected": {
                     "path": "connection",
                     "template": "[{time}] > **disconnected: {reason}**"
+                },
+                "ban": {
+                    "path": "ban",
+                    "template": "[{time}] > **{user}** banned for *{reason}*"
                 }
             }
         }

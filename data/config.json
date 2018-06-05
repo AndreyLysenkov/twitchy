@@ -428,8 +428,11 @@
             "list": [
                 "action",
                 "chat",
+                "connecting",
+                "connected",
                 "hosting",
                 "hosted",
+                "logon",
                 "unhost"
             ],
             "require": "./{path}.js",
@@ -470,6 +473,18 @@
                 "unhost": {
                     "path": "unhost",
                     "template": "прекртил хостить на {viewers} человеков"
+                },
+                "connecting": {
+                    "path": "connection",
+                    "template": " > *connecting to `{adress}` throught `{port}` port*"
+                },
+                "connected": {
+                    "path": "connection",
+                    "template": " > *connected to `{adress}` throught `{port}` port*"
+                },
+                "logon": {
+                    "path": "connection",
+                    "template": " > *log in to twitch*"
                 }
             }
         }

@@ -257,7 +257,7 @@
             },
             {
                 "name": "subscribers",
-                "enable": true
+                "enable": false
             },
             {
                 "name": "subscription",
@@ -430,6 +430,7 @@
                 "ban",
                 "chat",
                 "cheer",
+                "clearchat",
                 "connecting",
                 "connected",
                 "disconnected",
@@ -506,6 +507,10 @@
                 "ban": {
                     "path": "ban",
                     "template": "[{time}] > **{user}** banned for *{reason}*"
+                },
+                "timeout": {
+                    "path": "ban",
+                    "template": "[{time}] > **{user}** timeout for `{duration}` 'cause of *{reason}*"
                 },
                 "clearchat": {
                     "path": "ban",

@@ -479,11 +479,11 @@
                 },
                 "hosting": {
                     "path": "host",
-                    "template": "начал хостить {target} на {viewers} человеков"
+                    "template": "я хостю {target} на {viewers} человеков"
                 },
                 "hosted": {
                     "path": "host",
-                    "template": "{target} начал хостить меня на {viewers} человеков"
+                    "template": "{target} хостит меня на {viewers} человеков"
                 },
                 "unhost": {
                     "path": "unhost",
@@ -502,7 +502,7 @@
                     "template": "[{time}] > *log in to twitch*"
                 },
                 "disconnected": {
-                    "path": "connection",
+                    "path": "disconnected",
                     "template": "[{time}] > **disconnected: {reason}**"
                 },
                 "ban": {
@@ -510,7 +510,7 @@
                     "template": "[{time}] > **{user}** banned for *{reason}*"
                 },
                 "timeout": {
-                    "path": "ban",
+                    "path": "timeout",
                     "template": "[{time}] > **{user}** timeout for `{duration}` 'cause of *{reason}*",
                     "unit": "seconds"
                 },

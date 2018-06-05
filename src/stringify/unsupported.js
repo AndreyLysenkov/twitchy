@@ -1,12 +1,16 @@
-class UnsupportedEvent {
+const MainEvent = require('./main.js');
 
-    constructor(config) {
-        this.config = config;
+class UnsupportedEvent extends MainEvent {
+
+    constructor() {
+        super();
     }
 
-    parse(entry) {
-        this.entry = entry;
-        this.stringified = JSON.stringify(this.entry, null, this.config.json_space);
+    parse(config, entry) {
+        this.__proto__.parse(config, entry);
+        
+        this.stringified = JSON.stringify(this.entry.data, null, this.config.json_space);
+
         return this.config.template.format(this);
     }
 

@@ -13,8 +13,8 @@ function requireEvent(event) {
 }
 
 function parseEvent(EventType, event_config, entry) {
-    let parser = new EventType(event_config);
-    return parser.parse(entry);
+    let parser = new EventType();
+    return parser.parse(event_config, entry);
 }
 
 module.exports = (entry) => {

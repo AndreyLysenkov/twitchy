@@ -1,17 +1,9 @@
-const core = require('../core.js');
-const tz = require('moment-timezone');
+const MainEvent = require('./main.js');
 
-class ActionEvent {
+class HostEvent extends MainEvent {
 
-    constructor(config) {
-        this.config = config;
-    }
-
-    parse_time() {
-        let time = this.entry.data.time;
-        return time
-            .tz(core.config.app.time.zone)
-            .format(core.config.app.time.format);
+    constructor() {
+        super();
     }
 
     parse_target() {
@@ -22,10 +14,9 @@ class ActionEvent {
         return this.entry.data.argument[3];
     }
 
-    parse(entry) {
-        this.entry = entry;
+    parse(config, entry) {
+        this.__proto__.parse(config, entry);
         
-        this.time = this.parse_time();
         this.target = this.parse_target();
         this.viewers = this.parse_viewers();
 
@@ -34,4 +25,4 @@ class ActionEvent {
 
 }
 
-module.exports = ActionEvent;
+module.exports = HostEvent;

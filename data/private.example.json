@@ -1,9 +1,14 @@
 {
     "token": {
-        "discord": "IamAtokenOfYourBot.CanBeCreatedOnHttps://Discordapp.com/developers/applications",
+        "discord": "i_am_a_token_of_your_bot/can_be_created_on>https://discordapp.com/developers/applications",
         "twitch": {
-            "username": "twitch.username",
-            "password": "twitch.oath"
+            "username": "twitch/username",
+            "password": "twitch/oath"
+        }
+    },
+    "badge": {
+        "subscriber": {
+            "guild": "id_of_guild_with_twitch_subs_badges"
         }
     }
 }

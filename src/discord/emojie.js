@@ -34,7 +34,7 @@ class Emojie {
             return null;
         let result = [];
         list_all.forEach((emojie) => {
-            if (isBlack !== list.contains(emojie.name))
+            if (isBlack !== list.includes(emojie.name))
                 result.push(emojie);
         });
         return result;

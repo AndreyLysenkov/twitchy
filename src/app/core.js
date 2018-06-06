@@ -37,6 +37,7 @@ class App {
             discord_bot.emojie.fetch(guild_config);
         });
 
+        discord_bot.badge.subscriber.customizer.load();
         twitch_bot.start();
     }
 
@@ -60,5 +61,10 @@ App.bot = {
 App.bot.discord.client.on('ready', App.onDiscordLogin);
 
 App.bot.discord.emojie = require('../discord/emojie.js');
+App.bot.discord.badge = {
+    subscriber: {
+        customizer: require('../parse/arg/user/badge/subscriber/customizer.js')
+    }
+};
 
 module.exports = App;

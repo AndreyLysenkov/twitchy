@@ -21,7 +21,7 @@ class BadgeParser {
             name: name,
             value: value,
             config: config,
-            addition: parser(config, name, value)
+            addition: parser(config, name, value, this.data)
         };
     }
 

@@ -59,8 +59,9 @@ Core.config.token = Core.config.private.token;
 Core.config.app = Core.config.main.app;
 
 // set logger;
-Core.logger = {};
-Core.logger.core = require('./log/core.js');
+Core.logger = {
+    core: require('./log/core.js')
+};
 
 // set short refs to logger;
 Core.verbose = Core.logger.core.verbose;

@@ -10,12 +10,12 @@ class EntryParser {
     }
 
     parse() {
-        this.event = this.parse_event();
+        this.parse_event();
         this.parse_simple();
     }
 
     parse_event() {
-        return this.data.event;
+        this.event = this.data.event;
     }
 
     parse_simple() {
@@ -39,7 +39,7 @@ class EntryParser {
 
         let parser = self.parse_simple_arg_fetchParser(arg_config.id);
         if (parser)
-            result = parser(result, arg_config, self.data);
+            result = parser(result, arg_config, self);
 
         self[arg_config.id] = result;
     }

@@ -284,7 +284,6 @@
     "parser": {
         "entry": {
             "list": [
-                "userstate",
                 "username",
                 "message",
                 "channel",
@@ -295,7 +294,8 @@
                 "port",
                 "enabled",
                 "viewers",
-                "target"
+                "target",
+                "userstate"
             ],
             "id": {
                 "userstate": {
@@ -496,6 +496,13 @@
                         "hosting": 2
                     }
                 }
+            }
+        },
+        "badge": {
+            "subscriber": {
+                "separator": "_",
+                "base": 10,
+                "default": ""
             }
         }
     },

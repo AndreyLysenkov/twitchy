@@ -46,8 +46,10 @@ class SubscriberBadgeCustomizer {
         for (let i = 0; i < separated.length - 1; i++) {
             channel += `${config.separator}${separated[i]}`;
         }
-        channel = channel.substring(0, config.separator.length);
-        return channel;
+        channel = channel.substring(config.separator.length);
+        if (channel === config.default)
+            return config.default;
+        return `#${channel}`;
     }
 
     static getBadge(channel, value) {

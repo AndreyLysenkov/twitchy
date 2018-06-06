@@ -86,7 +86,7 @@ class Emojie {
             return content;
         let result = content;
         Emojie.list.forEach((emojie) => {
-            result = result.replace(emojie, Emojie.codes[emojie]);
+            result = result.replace(new RegExp(emojie, 'g'), Emojie.codes[emojie]);
         });
         return result;
     }

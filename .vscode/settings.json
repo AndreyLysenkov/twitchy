@@ -1,3 +1,10 @@
 {
-    "git.enableCommitSigning": true
+    "git.enableCommitSigning": true,
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false
 }

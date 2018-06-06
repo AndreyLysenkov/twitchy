@@ -282,103 +282,9 @@
         ]
     },
     "parser": {
-        "user": {
-            "state": {
-                "argument": [
-                    {
-                        "event": "action",
-                        "position": 2
-                    },
-                    {
-                        "event": "chat",
-                        "position": 2
-                    },
-                    {
-                        "event": "cheer",
-                        "position": 2
-                    },
-                    {
-                        "event": "message",
-                        "position": 2
-                    },
-                    {
-                        "event": "resub",
-                        "position": 5
-                    },
-                    {
-                        "event": "subscription",
-                        "position": 5
-                    },
-                    {
-                        "event": "whisper",
-                        "position": 2
-                    }
-                ],
-                "none": -1
-            },
-            "badge": {
-                "folder": "badge",
-                "list": [
-                    "broadcaster",
-                    "subscriber",
-                    "cheer",
-                    "moderator"
-                ],
-                "broadcaster": {
-                    "emojie": "🕹",
-                    "template": "{emojie}"
-                },
-                "moderator": {
-                    "emojie": "🛡",
-                    "template": "{emojie}"
-                },
-                "subscriber": {
-                    "emojie": "💵",
-                    "template": "{addition}{emojie}",
-                    "count": "{0}{1}",
-                    "base": 10,
-                    "digit": [
-                        "0⃣",
-                        "1⃣",
-                        "2⃣",
-                        "3⃣",
-                        "4⃣",
-                        "5⃣",
-                        "6⃣",
-                        "7⃣",
-                        "8⃣",
-                        "9⃣"
-                    ]
-                },
-                "cheer": {
-                    "emojie": "💎",
-                    "template": "{addition}{emojie}",
-                    "count": "{0}{1}",
-                    "base": 10,
-                    "shorten": [
-                        {
-                            "label": "k",
-                            "count": 3,
-                            "pattern": "{0}{1}"
-                        }
-                    ],
-                    "digit": [
-                        "0⃣",
-                        "1⃣",
-                        "2⃣",
-                        "3⃣",
-                        "4⃣",
-                        "5⃣",
-                        "6⃣",
-                        "7⃣",
-                        "8⃣",
-                        "9⃣"
-                    ]
-                }
-            }
-        },
         "entry": {
             "list": [
+                "userstate",
                 "username",
                 "message",
                 "channel",
@@ -392,6 +298,86 @@
                 "target"
             ],
             "id": {
+                "userstate": {
+                    "id": "user/core",
+                    "position": {
+                        "action": 2,
+                        "chat": 2,
+                        "cheer": 2,
+                        "message": 2,
+                        "resub": 5,
+                        "subscription": 5,
+                        "whisper": 2
+                    },
+                    "badge": {
+                        "folder": "badge",
+                        "list": [
+                            "broadcaster",
+                            "subscriber",
+                            "cheer",
+                            "moderator"
+                        ],
+                        "id": {
+                            "broadcaster": {
+                                "emojie": "🕹",
+                                "template": "{config.emojie}"
+                            },
+                            "moderator": {
+                                "emojie": "🛡",
+                                "template": "{config.emojie}"
+                            },
+                            "subscriber": {
+                                "emojie": "💵",
+                                "template": "{addition}{config.emojie}",
+                                "count": "{0}{1}",
+                                "base": 10,
+                                "digit": [
+                                    "0⃣",
+                                    "1⃣",
+                                    "2⃣",
+                                    "3⃣",
+                                    "4⃣",
+                                    "5⃣",
+                                    "6⃣",
+                                    "7⃣",
+                                    "8⃣",
+                                    "9⃣"
+                                ]
+                            },
+                            "cheer": {
+                                "emojie": "💎",
+                                "template": "{addition}{config.emojie}",
+                                "count": "{0}{1}",
+                                "base": 10,
+                                "shorten": [
+                                    {
+                                        "label": "k",
+                                        "count": 3,
+                                        "pattern": "{0}{1}"
+                                    }
+                                ],
+                                "digit": [
+                                    "0⃣",
+                                    "1⃣",
+                                    "2⃣",
+                                    "3⃣",
+                                    "4⃣",
+                                    "5⃣",
+                                    "6⃣",
+                                    "7⃣",
+                                    "8⃣",
+                                    "9⃣"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "from": {
+                    "id": "username",
+                    "position": {
+                        "whisper": 1
+                    }
+                },
                 "username": {
                     "id": "username",
                     "position": {

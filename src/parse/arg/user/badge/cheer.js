@@ -9,7 +9,7 @@ function value_to_digit_array(conf, value) {
 function value_shorten(conf, value) {
     let label = null;
     conf.shorten.forEach((x) => {
-        if ((value.length > x.count) 
+        if ((value.length > x.count)
             && ((!label) || (label.count < x.count)))
             label = x;
     });
@@ -24,15 +24,12 @@ function value_shorten(conf, value) {
     return new_value;
 }
 
-module.exports = (conf) => {
-    let arr = value_to_digit_array(conf, conf.value);
-    arr = value_shorten(conf, arr);
+module.exports = (config, name, value) => {
+    let arr = value_to_digit_array(config, value);
+    arr = value_shorten(config, arr);
     let result = "";
     arr.forEach((i) => {
-        result = conf.count.format(conf.digit[i], result);
+        result = config.count.format(config.digit[i], result);
     });
-    if (conf.label)
-        conf.label.pattern.format(result, conf.label.label);
-    conf.addition = result;
-    return conf;
+    return result;
 };

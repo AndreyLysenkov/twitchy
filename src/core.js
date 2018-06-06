@@ -18,7 +18,7 @@ class Core {
 
     static register_logger_receiver_items() {
         let items = Core.config.main.log.list;
-        
+
         items.forEach((item) => {
             let type = Core.logger.type[item.type];
             Core.logger.core.subscribe(item.levels, new type(item.options));
@@ -38,19 +38,19 @@ class Core {
 
 // set configs;
 Core.config = {
-    "lang": require(`../${data_directory}/${lang_file}`),
-    "main": require(`../${data_directory}/${config_file}`),
-    "private": require(`../${data_directory}/${private_config_file}`),
-    "location": {
-        "directory": {
-            "main": data_directory,
-            "guild": guild_config_directory
+    lang: require(`../${data_directory}/${lang_file}`),
+    main: require(`../${data_directory}/${config_file}`),
+    private: require(`../${data_directory}/${private_config_file}`),
+    location: {
+        directory: {
+            main: data_directory,
+            guild: guild_config_directory
         },
-        "files": {
-            "lang": lang_file,
-            "config": {
-                "main": config_file,
-                "private": private_config_file
+        files: {
+            lang: lang_file,
+            config: {
+                main: config_file,
+                private: private_config_file
             }
         }
     }

@@ -48,7 +48,7 @@ class Entry {
 
         let parser = self.parse_simple_arg_fetchParser(arg_config.id);
         if (parser)
-            result = parser(result, arg_config);
+            result = parser(result, arg_config, self.data);
 
         self[arg_config.id] = result;
     }

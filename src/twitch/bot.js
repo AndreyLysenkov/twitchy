@@ -2,52 +2,51 @@ const twitch = require('tmi.js');
 const moment = require('moment');
 
 const core = require('../core.js');
+const config = core.config.main.twitch;
 
 class TwitchBot {
 
     constructor(token) {
         this.token = token;
-        this.config = core.config.main.twitch;
+        this.broadcaster = [];
         this.channels = [];
-        this.receiver = {};
     }
 
     set_client_config() {
-        if (!this.config.client)
-            this.config.client = { };
+        if (!config.client)
+            config.client = { };
         this.set_client_config_logger();
         this.set_client_config_token();
         this.set_client_config_channels();
     }
 
     set_client_config_logger() {
-        this.config.client.logger = { };
-        let self = this;
-        this.config.log.list.forEach((log) => {
-            self.config.client.logger[log.event] = (message) => core.logger.core.send(
+        config.client.logger = { };
+        config.log.list.forEach((log) => {
+            config.client.logger[log.event] = (message) => core.logger.core.send(
                 log.level,
-                self.config.log.module,
+                config.log.module,
                 message
             );
         });
     }
 
     set_client_config_token() {
-        this.config.client.identity = this.token;
+        config.client.identity = this.token;
     }
 
     set_client_config_channels() {
         let channels = [];
         this.channels.forEach((channel) => {
-            if (channel != this.config.status)
+            if (channel != config.status)
                 channels.push(channel);
         });
-        this.config.client.channels = channels;
+        config.client.channels = channels;
     }
 
     set_client_event() {
         let self = this;
-        this.config.event.forEach((e) => {
+        config.event.forEach((e) => {
             if (!e.enable)
                 return;
             self.client.on(e.name, (arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) => {
@@ -58,7 +57,7 @@ class TwitchBot {
 
     set_client() {
         this.set_client_config();
-        this.client = new twitch.client(this.config.client);
+        this.client = new twitch.client(config.client);
         this.set_client_event();
     }
 
@@ -72,32 +71,38 @@ class TwitchBot {
     }
 
     isValidChannel(channel) {
-        return this.config.channels.indexOf(channel) >= 0;
+        return config.channels.includes(channel);
     }
 
-    add_channel(channel) {
-        if (this.isValidChannel(channel)
-            && this.receiver[channel])
-            return;
-        this.receiver[channel] = [];
-        this.channels.push(channel);
+    isHaveChannel(channel) {
+        return this.channels.includes(channel);
     }
 
-    add_receiver(channel, receiver) {
-        this.receiver[channel].push(receiver);
-    }
-
-    subscribe(channel, receiver) {
+    formatChannel(channel) {
         if (!channel.startsWith('#'))
-            channel = `#${channel}`;
-        this.add_channel(channel);
-        this.add_receiver(channel, receiver);
+            return `#${channel}`;
+        return channel;
+    }
+
+    addChannel(channel) {
+        channel = this.formatChannel(channel);
+
+        if (!this.isValidChannel(channel)
+            || this.isHaveChannel(channel))
+            return;
+
+        if (channel != config.status)
+            this.channels.push(channel);
+    }
+
+    subscribe(broadcaster) {
+        this.broadcaster.push(broadcaster);
     }
 
     getChannel(entry) {
         let channel = entry.channel;
         if (!channel || !this.isValidChannel(channel))
-            channel = this.config.status;
+            channel = config.status;
         return channel;
     }
 
@@ -120,8 +125,8 @@ class TwitchBot {
     }
 
     send(channel, message) {
-        this.receiver[channel].forEach(
-            (receiver) => receiver.receive(message));
+        this.broadcaster.forEach(
+            (broadcaster) => broadcaster.send(channel, message));
     }
 
 }

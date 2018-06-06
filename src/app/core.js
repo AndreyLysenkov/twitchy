@@ -7,30 +7,37 @@ class App {
 
     static start() {
         App.bot.discord.start();
-        
+
     }
 
     static onDiscordLogin() {
         const GuildConfig = require('../discord/guild_config.js');
-        const DiscordChannel = require('../discord/chat.js');
+        const DiscordBroadcaster = require('../discord/broadcaster.js');
 
-        let discord_client = App.bot.discord.client;
-        let guilds = discord_client.guilds;
+        let discord_bot = App.bot.discord;
+        let twitch_bot = App.bot.twitch;
+
+        let discord_broadcaster = new DiscordBroadcaster(twitch_bot, discord_bot);
+        twitch_bot.subscribe(discord_broadcaster);
+
+        let guilds = discord_bot.client.guilds;
 
         guilds.forEach((guild) => {
             let guild_config = new GuildConfig(guild.id);
             if (!guild_config.config || !guild_config.config.channels)
                 return;
-                
+
             guild_config.config.channels.forEach((config) => {
-                let channel = new DiscordChannel(discord_client, guild.id, config.discord);
-                App.bot.twitch.subscribe(config.twitch, channel);
+                discord_broadcaster.subscribe(config.twitch, {
+                    guild: guild.id,
+                    channel: config.discord
+                });
             });
 
-            App.bot.discord.emojie.fetch(guild_config);
+            discord_bot.emojie.fetch(guild_config);
         });
 
-        App.bot.twitch.start();
+        twitch_bot.start();
     }
 
     static stop() {
@@ -46,11 +53,11 @@ class App {
 }
 
 App.bot = {
-    "discord" : new DiscordBot(core.config.token.discord),
-    "twitch": new TwitchBot(core.config.token.twitch)
+    discord : new DiscordBot(core.config.token.discord),
+    twitch: new TwitchBot(core.config.token.twitch)
 };
 
-App.bot.discord.client.on("ready", App.onDiscordLogin);
+App.bot.discord.client.on('ready', App.onDiscordLogin);
 
 App.bot.discord.emojie = require('../discord/emojie.js');
 

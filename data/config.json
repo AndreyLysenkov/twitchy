@@ -106,7 +106,7 @@
                 }
             }
         },
-        "chat": {
+        "broadcaster": {
             "limit": 1800,
             "template": "{line}"
         },

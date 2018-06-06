@@ -328,8 +328,8 @@
                             },
                             "subscriber": {
                                 "emojie": "💵",
-                                "template": "{addition}{config.emojie}",
-                                "count": "{0}{1}",
+                                "template": "{addition}",
+                                "count": "{digit.one}{digit.two}{config.emojie}",
                                 "base": 10,
                                 "digit": [
                                     "0⃣",

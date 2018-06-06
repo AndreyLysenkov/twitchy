@@ -3,7 +3,13 @@ const customizer = require('./subscriber/customizer.js');
 function default_badge(config, value) {
     let digit1 = Math.floor(value / config.base);
     let digit2 = value % config.base;
-    return config.count.format(config.digit[digit1], config.digit[digit2]);
+    return config.count.format({
+        digit: {
+            one: config.digit[digit1],
+            two: config.digit[digit2]
+        },
+        config: config
+    });
 }
 
 module.exports = (config, name, value, data) => {

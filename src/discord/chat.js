@@ -26,7 +26,7 @@ class Chat {
     }
 
     receive(entry) {
-        entry.message.content = this.message_emojie(entry.message.content);
+        entry.content = this.message_emojie(entry.content);
 
         let content = this.message_stringify(entry);
         let lines = this.limit_content(content);

@@ -377,50 +377,71 @@
                 }
             }
         },
-        "message": {
-            "argument": [
-                {
-                    "event": "action",
-                    "position": 3,
-                    "emojie": true
-                },
-                {
-                    "event": "chat",
-                    "position": 3,
-                    "emojie": true
-                },
-                {
-                    "event": "cheer",
-                    "position": 3,
-                    "emojie": true
-                },
-                {
-                    "event": "message",
-                    "position": 3,
-                    "emojie": true
-                },
-                {
-                    "event": "notice",
-                    "position": 3,
-                    "emojie": false
-                },
-                {
-                    "event": "resub",
-                    "position": 4,
-                    "emojie": true
-                },
-                {
-                    "event": "subscription",
-                    "position": 4,
-                    "emojie": true
-                },
-                {
-                    "event": "whisper",
-                    "position": 3,
-                    "emojie": true
-                }
+        "entry": {
+            "list": [
+                "username",
+                "message",
+                "channel"
             ],
-            "none": -1
+            "id": {
+                "username": {
+                    "id": "username",
+                    "position": {
+                        "ban": 2,
+                        "hosted": 2,
+                        "join": 2,
+                        "mod": 2,
+                        "part": 2,
+                        "resub": 2,
+                        "subscription": 2,
+                        "timeout": 2,
+                        "unmod": 2
+                    }
+                },
+                "message": {
+                    "id": "content",
+                    "position": {
+                        "action": 3,
+                        "chat": 3,
+                        "cheer": 3,
+                        "message": 3,
+                        "notice": 3,
+                        "resub": 4,
+                        "subscription": 4,
+                        "whisper": 3
+                    }
+                },
+                "channel": {
+                    "id" : "channel",
+                    "position": {
+                        "action": 1,
+                        "ban": 1,
+                        "chat": 1,
+                        "cheer": 1,
+                        "clearchat": 1,
+                        "emoteonly": 1,
+                        "followersonly": 1,
+                        "hosted": 1,
+                        "hosting": 1,
+                        "join": 1,
+                        "message": 1,
+                        "mod": 1,
+                        "mods": 1,
+                        "notice": 1,
+                        "part": 1,
+                        "r9kbeta": 1,
+                        "resub": 1,
+                        "roomstate": 1,
+                        "serverchange": 1,
+                        "slowmode": 1,
+                        "subscribers": 1,
+                        "subscription": 1,
+                        "timeout": 1,
+                        "unhost": 1,
+                        "unmod": 1
+                    }
+                }
+            }
         }
     },
     "stringify": {
@@ -525,6 +546,6 @@
         "time" : {
             "zone": "Europe/Moscow",
             "format": "HH:mm:ss"
-        }        
+        }
     }
 }

@@ -7,12 +7,12 @@ class MessageEvent extends UserEvent {
     }
 
     parse_message() {
-        return this.entry.message.content;
+        return this.entry.content;
     }
 
     parse(config, entry) {
         this.__proto__.parse(config, entry);
-        
+
         this.message = this.parse_message();
 
         return this.config.template.format(this);

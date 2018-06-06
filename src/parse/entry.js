@@ -1,5 +1,7 @@
 const UserParser = require('./user.js');
-const MessageParser = require('./message.js');
+
+const core = require('../core.js');
+const config = core.config.main.parser.entry;
 
 class Entry {
 
@@ -8,8 +10,13 @@ class Entry {
     }
 
     parse() {
+        this.event = this.parse_event();
         this.user = this.parse_user();
-        this.message = this.parse_message();
+        this.parse_simple();
+    }
+
+    parse_event() {
+        return this.data.event;
     }
 
     parse_user() {
@@ -18,10 +25,16 @@ class Entry {
         return result;
     }
 
-    parse_message() {
-        let result = new MessageParser(this.data);
-        result.parse();
-        return result;
+    parse_simple() {
+        config.list.forEach((arg) => this.parse_simple_arg(this, arg));
+    }
+
+    parse_simple_arg(self, arg) {
+        let arg_config = config.id[arg];
+        let arg_position = arg_config.position[self.event];
+        if (!arg_position)
+            return null;
+        self[arg_config.id] = self.data.argument[arg_position];
     }
 
 }

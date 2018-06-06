@@ -5,8 +5,8 @@ class MainEvent {
 
     constructor() {}
 
-    parse_time(entry) {
-        let time = entry.time;
+    parse_time() {
+        let time = this.entry.time;
         return time
             .tz(core.config.app.time.zone)
             .format(core.config.app.time.format);
@@ -14,8 +14,9 @@ class MainEvent {
 
     parse(config, entry) {
         this.config = config;
+        this.entry = entry;
 
-        entry.time = this.parse_time(entry);
+        this.entry.time = this.parse_time();
 
         return this.config.template.format(entry);
     }

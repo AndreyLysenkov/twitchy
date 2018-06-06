@@ -8,10 +8,10 @@ class UnsupportedEvent extends MainEvent {
 
     parse(config, entry) {
         this.__proto__.parse(config, entry);
-        
-        this.stringified = JSON.stringify(this.entry.data, null, this.config.json_space);
 
-        return this.config.template.format(this);
+        this.entry.stringified = JSON.stringify(this.entry.data, null, this.config.json_space);
+
+        return this.config.template.format(this.entry);
     }
 
 }

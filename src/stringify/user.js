@@ -16,11 +16,11 @@ class UserEvent extends MainEvent  {
 
     parse(config, entry) {
         this.__proto__.parse(config, entry);
-        
-        this.badges = this.parse_badges();
-        this.username = this.parse_username();
 
-        return this.config.template.format(this);
+        this.entry.badges = this.parse_badges();
+        this.entry.username = this.parse_username();
+
+        return this.config.template.format(this.entry);
     }
 
 }

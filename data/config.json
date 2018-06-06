@@ -108,7 +108,7 @@
         },
         "broadcaster": {
             "limit": 1800,
-            "template": "`{entry.time}` > {line}"
+            "template": "`{entry.time}` {line}"
         },
         "emojie": {
             "mode": {
@@ -517,10 +517,10 @@
                 "unhost"
             ],
             "require": "./{path}.js",
+            "json_stringify_option": 4,
             "id": {
                 "unsupported": {
-                    "path": "unsupported",
-                    "json_space": 4,
+                    "path": "main",
                     "template": "**unsupported event** \n```json\n{stringified}\n```"
                 },
                 "action": {

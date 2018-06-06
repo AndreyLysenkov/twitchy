@@ -536,7 +536,9 @@
                 "hosted",
                 "logon",
                 "timeout",
-                "unhost"
+                "unhost",
+                "resub",
+                "subscription"
             ],
             "require": "./{path}.js",
             "json_stringify_option": 4,

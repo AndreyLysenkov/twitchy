@@ -30,6 +30,7 @@ class MainEvent {
     parse(config, entry) {
         this.config = config;
         this.entry = entry;
+        this.entry.config = config;
 
         this.parse_time();
         this.parse_badge();

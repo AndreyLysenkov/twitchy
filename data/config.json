@@ -295,6 +295,8 @@
                 "enabled",
                 "viewers",
                 "target",
+                "months",
+                "method",
                 "userstate"
             ],
             "id": {
@@ -495,6 +497,19 @@
                     "position": {
                         "hosting": 2
                     }
+                },
+                "months": {
+                    "id": "months",
+                    "position": {
+                        "resub": 3
+                    }
+                },
+                "method": {
+                    "id": "method",
+                    "position": {
+                        "resub": 6,
+                        "subscription": 3
+                    }
                 }
             }
         },
@@ -590,6 +605,36 @@
                 "clearchat": {
                     "path": "main",
                     "template": "**chat has been cleared**"
+                },
+                "resub": {
+                    "path": "sub",
+                    "template": "**{username}** resub **{months}** месяц за **{parsed.tier}** долларсов\n{content}",
+                    "prime": {
+                        "template": "**{username}** resub **{months}** месяц через *писосный* **прайм**\n{content}"
+                    },
+                    "content": {
+                        "none": ""
+                    },
+                    "tier": {
+                        "1": 5,
+                        "2": 10,
+                        "3": 25
+                    }
+                },
+                "subscription": {
+                    "path": "sub",
+                    "template": "**{username}** sub за **{parsed.tier}** долларсов\n{content}",
+                    "prime": {
+                        "template": "**{username}** sub через *писосный* **прайм**\n{content}"
+                    },
+                    "content": {
+                        "none": ""
+                    },
+                    "tier": {
+                        "1": 5,
+                        "2": 10,
+                        "3": 25
+                    }
                 }
             }
         }

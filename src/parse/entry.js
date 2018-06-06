@@ -1,9 +1,7 @@
-const UserParser = require('./user.js');
-
 const core = require('../core.js');
 const config = core.config.main.parser.entry;
 
-class Entry {
+class EntryParser {
 
     constructor(data) {
         this.data = data;
@@ -13,18 +11,11 @@ class Entry {
 
     parse() {
         this.event = this.parse_event();
-        this.user = this.parse_user();
         this.parse_simple();
     }
 
     parse_event() {
         return this.data.event;
-    }
-
-    parse_user() {
-        let result = new UserParser(this.data);
-        result.parse();
-        return result;
     }
 
     parse_simple() {
@@ -55,4 +46,4 @@ class Entry {
 
 }
 
-module.exports = Entry;
+module.exports = EntryParser;

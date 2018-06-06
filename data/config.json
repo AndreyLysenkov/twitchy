@@ -299,7 +299,7 @@
             ],
             "id": {
                 "userstate": {
-                    "id": "user/core",
+                    "id": "user",
                     "position": {
                         "action": 2,
                         "chat": 2,
@@ -524,34 +524,25 @@
                     "template": "[{time}] > **unsupported event** \n```json\n{stringified}\n```"
                 },
                 "action": {
-                    "path": "user",
-                    "badges": {
-                        "separator": ", "
-                    },
-                    "username": {
-                        "template": "{name} [{display}]"
-                    },
-                    "template": "[{time}] {badges} > **{username} {content}**"
+                    "path": "main",
+                    "template": "`{time}` {user.badge.stringify} **{user.name.display} {content}**",
+                    "badge": {
+                        "join": ", "
+                    }
                 },
                 "chat": {
-                    "path": "user",
-                    "badges": {
-                        "separator": ", "
-                    },
-                    "username": {
-                        "template": "{name} [{display}]"
-                    },
-                    "template": "[{time}] {badges} > **{username}** : {content}"
+                    "path": "main",
+                    "template": "`{time}` {user.badge.stringify} **{user.name.display}** : {content}",
+                    "badge": {
+                        "join": ", "
+                    }
                 },
                 "cheer": {
-                    "path": "user",
-                    "badges": {
-                        "separator": ", "
-                    },
-                    "username": {
-                        "template": "{name} [{display}]"
-                    },
-                    "template": "[{time}] {badges} > **{username}** 💎cheer💎 : {content}"
+                    "path": "main",
+                    "template": "`{time}` {user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content}",
+                    "badge": {
+                        "join": ", "
+                    }
                 },
                 "hosting": {
                     "path": "main",

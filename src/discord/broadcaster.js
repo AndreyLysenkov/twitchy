@@ -44,7 +44,8 @@ class DiscordTwitchBroadcaster extends TwitchBroadcaster {
             self.send_entry(
                 channel,
                 config.template.format({
-                    line: line
+                    line: line,
+                    entry: entry
                 })
             );
         });

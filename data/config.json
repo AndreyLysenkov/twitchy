@@ -108,7 +108,7 @@
         },
         "broadcaster": {
             "limit": 1800,
-            "template": "{line}"
+            "template": "`{entry.time}` > {line}"
         },
         "emojie": {
             "mode": {
@@ -521,25 +521,25 @@
                 "unsupported": {
                     "path": "unsupported",
                     "json_space": 4,
-                    "template": "[{time}] > **unsupported event** \n```json\n{stringified}\n```"
+                    "template": "**unsupported event** \n```json\n{stringified}\n```"
                 },
                 "action": {
                     "path": "main",
-                    "template": "`{time}` {user.badge.stringify} **{user.name.display} {content}**",
+                    "template": "{user.badge.stringify} **{user.name.display} {content}**",
                     "badge": {
                         "join": ", "
                     }
                 },
                 "chat": {
                     "path": "main",
-                    "template": "`{time}` {user.badge.stringify} **{user.name.display}** : {content}",
+                    "template": "{user.badge.stringify} **{user.name.display}** : {content}",
                     "badge": {
                         "join": ", "
                     }
                 },
                 "cheer": {
                     "path": "main",
-                    "template": "`{time}` {user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content}",
+                    "template": "{user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content}",
                     "badge": {
                         "join": ", "
                     }
@@ -558,31 +558,31 @@
                 },
                 "connecting": {
                     "path": "main",
-                    "template": "[{time}] > *connecting to `{address}` throught `{port}` port*"
+                    "template": "*connecting to `{address}` throught `{port}` port*"
                 },
                 "connected": {
                     "path": "main",
-                    "template": "[{time}] > *connected to `{address}` throught `{port}` port*"
+                    "template": "*connected to `{address}` throught `{port}` port*"
                 },
                 "logon": {
                     "path": "main",
-                    "template": "[{time}] > *log in to twitch*"
+                    "template": "*log in to twitch*"
                 },
                 "disconnected": {
                     "path": "main",
-                    "template": "[{time}] > **disconnected: {reason}**"
+                    "template": "**disconnected: {reason}**"
                 },
                 "ban": {
                     "path": "main",
-                    "template": "[{time}] > **{username}** banned for *{reason}*"
+                    "template": "**{username}** banned for *{reason}*"
                 },
                 "timeout": {
                     "path": "main",
-                    "template": "[{time}] > **{username}** timeout for `{duration}` 'cause of *{reason}*"
+                    "template": "**{username}** timeout for `{duration}` 'cause of *{reason}*"
                 },
                 "clearchat": {
                     "path": "main",
-                    "template": "[{time}] > **chat has been cleared**"
+                    "template": "**chat has been cleared**"
                 }
             }
         }

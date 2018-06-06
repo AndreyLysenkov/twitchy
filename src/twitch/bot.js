@@ -94,8 +94,8 @@ class TwitchBot {
         this.add_receiver(channel, receiver);
     }
 
-    getChannel(data) {
-        let channel = data.argument[1];
+    getChannel(entry) {
+        let channel = entry.channel;
         if (!channel || !this.isValidChannel(channel))
             channel = this.config.status;
         return channel;
@@ -114,9 +114,9 @@ class TwitchBot {
             argument: arguments,
             time: moment()
         };
-        this.send(
-            this.getChannel(data), 
-            this.event_parse(data));
+        let entry = this.event_parse(data);
+        let channel = this.getChannel(entry);
+        this.send(channel, entry);
     }
 
     send(channel, message) {

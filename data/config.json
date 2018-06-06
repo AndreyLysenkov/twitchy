@@ -381,7 +381,15 @@
             "list": [
                 "username",
                 "message",
-                "channel"
+                "channel",
+                "reason",
+                "duration",
+                "length",
+                "address",
+                "port",
+                "enabled",
+                "viewers",
+                "target"
             ],
             "id": {
                 "username": {
@@ -412,7 +420,7 @@
                     }
                 },
                 "channel": {
-                    "id" : "channel",
+                    "id": "channel",
                     "position": {
                         "action": 1,
                         "ban": 1,
@@ -439,6 +447,67 @@
                         "timeout": 1,
                         "unhost": 1,
                         "unmod": 1
+                    }
+                },
+                "reason": {
+                    "id": "reason",
+                    "position": {
+                        "ban": 3,
+                        "disconnected": 3,
+                        "timeout": 3
+                    }
+                },
+                "duration": {
+                    "id": "duration",
+                    "position": {
+                        "timeout": 4
+                    },
+                    "unit": "seconds"
+                },
+                "length": {
+                    "id": "duration",
+                    "position": {
+                        "slowmode": 3,
+                        "followersonly": 3
+                    },
+                    "unit": "minutes"
+                },
+                "address": {
+                    "id": "address",
+                    "position": {
+                        "connected": 1,
+                        "connecting": 1
+                    }
+                },
+                "port": {
+                    "id": "port",
+                    "position": {
+                        "connected": 2,
+                        "connecting": 2
+                    }
+                },
+                "enabled": {
+                    "id": "active",
+                    "position": {
+                        "emoteonly": 2,
+                        "followersonly": 2,
+                        "r9kbeta": 2,
+                        "slowmode": 2,
+                        "subscribers": 2
+                    }
+                },
+                "viewers": {
+                    "id": "viewers",
+                    "position": {
+                        "hosted": 3,
+                        "hosting": 3,
+                        "unhost": 2
+                    }
+                },
+                "target": {
+                    "id": "username",
+                    "position": {
+                        "hosting": 2
                     }
                 }
             }
@@ -468,72 +537,71 @@
                     "json_space": 4,
                     "template": "[{time}] > **unsupported event** \n```json\n{stringified}\n```"
                 },
-                "action" : {
-                    "path": "message",
+                "action": {
+                    "path": "user",
                     "badges": {
                         "separator": ", "
                     },
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username} {message}**"
+                    "template": "[{time}] {badges} > **{username} {content}**"
                 },
-                "chat" : {
-                    "path": "message",
+                "chat": {
+                    "path": "user",
                     "badges": {
                         "separator": ", "
                     },
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username}** : {message}"
+                    "template": "[{time}] {badges} > **{username}** : {content}"
                 },
-                "cheer" : {
-                    "path": "message",
+                "cheer": {
+                    "path": "user",
                     "badges": {
                         "separator": ", "
                     },
                     "username": {
                         "template": "{name} [{display}]"
                     },
-                    "template": "[{time}] {badges} > **{username}** 💎cheer💎 : {message}"
+                    "template": "[{time}] {badges} > **{username}** 💎cheer💎 : {content}"
                 },
                 "hosting": {
-                    "path": "host",
+                    "path": "main",
                     "template": "я хостю {target} на {viewers} человеков"
                 },
                 "hosted": {
-                    "path": "host",
+                    "path": "main",
                     "template": "{target} хостит меня на {viewers} человеков"
                 },
                 "unhost": {
-                    "path": "unhost",
+                    "path": "main",
                     "template": "прекртил хостить на {viewers} человеков"
                 },
                 "connecting": {
-                    "path": "connection",
-                    "template": "[{time}] > *connecting to `{adress}` throught `{port}` port*"
+                    "path": "main",
+                    "template": "[{time}] > *connecting to `{address}` throught `{port}` port*"
                 },
                 "connected": {
-                    "path": "connection",
-                    "template": "[{time}] > *connected to `{adress}` throught `{port}` port*"
+                    "path": "main",
+                    "template": "[{time}] > *connected to `{address}` throught `{port}` port*"
                 },
                 "logon": {
                     "path": "main",
                     "template": "[{time}] > *log in to twitch*"
                 },
                 "disconnected": {
-                    "path": "disconnected",
+                    "path": "main",
                     "template": "[{time}] > **disconnected: {reason}**"
                 },
                 "ban": {
-                    "path": "ban",
-                    "template": "[{time}] > **{user}** banned for *{reason}*"
+                    "path": "main",
+                    "template": "[{time}] > **{username}** banned for *{reason}*"
                 },
                 "timeout": {
-                    "path": "timeout",
-                    "template": "[{time}] > **{user}** timeout for `{duration}` 'cause of *{reason}*",
-                    "unit": "seconds"
+                    "path": "main",
+                    "template": "[{time}] > **{username}** timeout for `{duration}` 'cause of *{reason}*"
                 },
                 "clearchat": {
                     "path": "main",
@@ -543,7 +611,7 @@
         }
     },
     "app": {
-        "time" : {
+        "time": {
             "zone": "Europe/Moscow",
             "format": "HH:mm:ss"
         }

@@ -7,6 +7,8 @@ class Entry {
 
     constructor(data) {
         this.data = data;
+        this.time = data.time;
+        this.event = data.event;
     }
 
     parse() {
@@ -29,12 +31,26 @@ class Entry {
         config.list.forEach((arg) => this.parse_simple_arg(this, arg));
     }
 
+    parse_simple_arg_fetchParser(name) {
+        try {
+            return require(`./arg/${name}.js`);
+        } catch (e) {
+            return null;
+        }
+    }
+
     parse_simple_arg(self, arg) {
         let arg_config = config.id[arg];
         let arg_position = arg_config.position[self.event];
         if (!arg_position)
             return null;
-        self[arg_config.id] = self.data.argument[arg_position];
+        let result = self.data.argument[arg_position];
+
+        let parser = self.parse_simple_arg_fetchParser(arg_config.id);
+        if (parser)
+            result = parser(result, arg_config);
+
+        self[arg_config.id] = result;
     }
 
 }

@@ -10,14 +10,20 @@ class DiscordBot {
         this.client = new discord.Client();
 
         this.set_logger();
+        this.set_commandListener();
     }
 
     set_logger() {
         let self = this;
         this.config.log.list.forEach((e) => {
-            self.client.on(e.event, 
+            self.client.on(e.event,
                 (message) => DiscordBot.log(e.level, self.config.log.module, message));
         });
+    }
+
+    set_commandListener() {
+        const CommandListener = require('./command/listener.js');
+        this.command = new CommandListener(this.client);
     }
 
     static log(level, _module, message) {

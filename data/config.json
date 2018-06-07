@@ -117,6 +117,19 @@
                 "black": "blacklist"
             }
         },
+        "command": {
+            "event": [
+                "message"
+            ],
+            "require": "./{path}.js",
+            "id": {
+                "message": {
+                    "path": "message",
+                    "prefix": ".",
+                    "split": "/"
+                }
+            }
+        },
         "regex": "\\[*`~_]\\g"
     },
     "twitch": {

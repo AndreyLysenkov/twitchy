@@ -1,4 +1,5 @@
 const core = require('../../core.js');
+const config = core.config.main.discord.command.message;
 
 class MessageListener {
 
@@ -27,22 +28,22 @@ class MessageListener {
     }
 
 
-    call(message) {
+    call(self, message) {
         try {
             let content = message.content;
             let channel = message.channel;
             let author = message.member;
 
             if (!content
-                || !content.startsWith(this.config.prefix)
+                || !content.startsWith(self.config.prefix)
                 || !channel.guild
-                || !author.permissions.has(this.config.permission))
+                || !author.permissions.has(self.config.permission))
                 return;
 
-            let args = content.split(this.config.split);
-            let command = args[0].subsctring(this.config.prefix.length);
+            let args = content.split(self.config.split);
+            let command = args[0].substring(self.config.prefix.length);
 
-            let command_module = this.command[command];
+            let command_module = self.command[command];
             if (command_module)
                 command_module.module.call({
                     message: message,

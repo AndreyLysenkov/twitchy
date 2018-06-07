@@ -1,10 +1,9 @@
 class AboutCommand {
 
     static call(data) {
-        data.channel.reply(data.config.reply);
+        data.channel.send(data.config.reply);
     }
 
 }
-
 
 module.exports = AboutCommand;

@@ -12,8 +12,11 @@ class CommandListener {
         let self = this;
         config.event.forEach((event) => {
             let event_require = self.require_event(client, event);
+            let event_config = config[event];
             self.events.push(event_require);
-            client.on(self.config.id, event_require.call);
+            client.on(event_config.id, (arg1) => {
+                event_require.call(event_require, arg1);
+            });
         });
     }
 
@@ -28,5 +31,6 @@ class CommandListener {
     }
 
 }
+
 
 module.exports = CommandListener;

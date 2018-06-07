@@ -34,24 +34,31 @@ class MessageListener {
             let author = message.member;
 
             if (!content
-                || !content.startsWith(self.config.prefix)
                 || !channel.guild
                 || !author.permissions.has(self.config.permission))
                 return;
 
             let args = content.split(self.config.split);
-            let command = args[0].substring(self.config.prefix.length);
+
+            if (args[0] != self.config.prefix)
+                return;
+            args.shift();
+
+            let command = args[0];
+            args.shift();
 
             let command_module = self.command[command];
+            let data = {
+                message: message,
+                content: content,
+                channel: channel,
+                guild: channel.guild.id,
+                author: author,
+                args: args,
+                config: command_module.config
+            };
             if (command_module)
-                command_module.module.call({
-                    message: message,
-                    content: content,
-                    channel: channel,
-                    author: author,
-                    args: args,
-                    config: command_module.config
-                });
+                command_module.module.call(data);
         } catch (e) {
             core.warn(`smth went wrong when reading command`, e);
         }

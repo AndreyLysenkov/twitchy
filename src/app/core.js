@@ -19,11 +19,13 @@ class App {
 
         let discord_broadcaster = new DiscordBroadcaster(twitch_bot, discord_bot);
         twitch_bot.subscribe(discord_broadcaster);
+        App.bot.discord.broadcaster = discord_broadcaster;
 
         let guilds = discord_bot.client.guilds;
 
         guilds.forEach((guild) => {
             let guild_config = new GuildConfig(guild.id);
+            App.bot.discord.guild[guild.id] = guild_config;
             if (!guild_config.config || !guild_config.config.channels)
                 return;
 
@@ -64,5 +66,6 @@ App.bot.discord.emojie = require('../discord/emojie.js');
 App.bot.discord.badge = {
     customizer: require('../parse/arg/user/badge/customizer.js')
 };
+App.bot.discord.guild = {};
 
 module.exports = App;

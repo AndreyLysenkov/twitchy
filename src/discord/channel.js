@@ -15,13 +15,19 @@ class DiscordChannel {
                 .channels.get(this.channelId);
         } catch (e) {
             core.warn(`can't find channel ${this.channelId} in guild ${this.guildId}`, e);
+            this.channel = {};
         }
     }
 
     receive(message) {
         if (!this.channel)
             this.fetch();
-        this.channel.send(message);
+
+        try {
+            this.channel.send(message);
+        } catch (e) {
+            core.warn(`failed to send to channel ${this.channelId} in guild ${this.guildId}`, e);
+        }
     }
 
 }

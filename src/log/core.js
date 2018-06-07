@@ -24,10 +24,10 @@ class Logger {
 
     static send(level, bot_module, message, error) {
         let log = {
-            "level": level,
-            "module": bot_module,
-            "message": message,
-            "time": moment()
+            level: level,
+            module: bot_module,
+            message: message,
+            time: moment()
         };
         if (error)
             log.error = error;
@@ -38,7 +38,7 @@ class Logger {
         levels.forEach((level) => {
             if (!Logger.receivers[level])
                 Logger.receivers[level] = [];
-            Logger.receivers[level].push(receiver);            
+            Logger.receivers[level].push(receiver);
         });
     }
 

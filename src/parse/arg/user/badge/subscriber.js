@@ -1,4 +1,4 @@
-const customizer = require('./subscriber/customizer.js');
+const customizer = require('./customizer.js');
 
 function default_badge(config, value) {
     let digit1 = Math.floor(value / config.base);
@@ -17,7 +17,7 @@ module.exports = (config, name, value, data) => {
     if (!channel)
         return default_badge(config, value);
 
-    let badge = customizer.getBadge(channel, value);
+    let badge = customizer.getBadge(channel, config.type, value);
     if (!badge)
         return default_badge(config, value);
     return badge;

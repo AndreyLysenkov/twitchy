@@ -1,3 +1,5 @@
+const customizer = require('./customizer.js');
+
 function value_to_digit_array(conf, value) {
     let result = [];
     for (; value > 0; value = Math.floor(value / conf.base)) {
@@ -24,12 +26,26 @@ function value_shorten(conf, value) {
     return new_value;
 }
 
-module.exports = (config, name, value) => {
+function default_badge(config, value) {
     let arr = value_to_digit_array(config, value);
     arr = value_shorten(config, arr);
     let result = "";
     arr.forEach((i) => {
         result = config.count.format(config.digit[i], result);
     });
-    return result;
+    return config.default_template.format({
+        result: result,
+        config: config
+    });
+}
+
+module.exports = (config, name, value, data) => {
+    let channel = data.channel;
+    if (!channel)
+        return default_badge(config, value);
+
+    let badge = customizer.getBadge(channel, config.type, value);
+    if (!badge)
+        return default_badge(config, value);
+    return badge;
 };

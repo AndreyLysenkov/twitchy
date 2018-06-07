@@ -364,6 +364,7 @@
                                 "template": "{addition}",
                                 "count": "{digit.one}{digit.two}{config.emojie}",
                                 "base": 10,
+                                "type": "sub",
                                 "digit": [
                                     "0⃣",
                                     "1⃣",
@@ -379,9 +380,11 @@
                             },
                             "cheer": {
                                 "emojie": "💎",
-                                "template": "{addition}{config.emojie}",
+                                "template": "{addition}",
                                 "count": "{0}{1}",
+                                "default_template": "{result}{config.emojie}",
                                 "base": 10,
+                                "type": "cheer",
                                 "shorten": [
                                     {
                                         "label": "k",
@@ -551,11 +554,9 @@
             }
         },
         "badge": {
-            "subscriber": {
-                "separator": "_",
-                "base": 10,
-                "default": ""
-            }
+            "separator": "_",
+            "base": 10,
+            "default": ""
         }
     },
     "stringify": {

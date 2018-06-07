@@ -20,11 +20,15 @@
                         "split": "\n"
                     },
                     "error": {
-                        "content": "[{time_formatted}] > [{module}.{level}] > {message} >\n{error_formatted}",
+                        "content": "[{time_formatted}] > [{module}.{level}] > {message} >\n{error_formatted.stringify}\n{error_formatted.toString}",
                         "line": " >> {line}",
                         "skip": 1,
                         "split": "\n",
-                        "spaces": 4
+                        "spaces": 4,
+                        "raw": {
+                            "enabled": true,
+                            "message": "[{time_formatted}] > [{module}.{level}] > raw error\n"
+                        }
                     }
                 },
                 "time_format": "YYYY-MM-DD>HH:mm:ss.SSS",

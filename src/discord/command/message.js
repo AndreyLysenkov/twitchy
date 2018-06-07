@@ -1,5 +1,4 @@
 const core = require('../../core.js');
-const config = core.config.main.discord.command.message;
 
 class MessageListener {
 

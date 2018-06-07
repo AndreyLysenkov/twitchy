@@ -7,7 +7,7 @@ class ConsoleReceiver {
     constructor(config) {
         if (!config)
             config = core.config.main.log.receiver.console;
-        this.config = config; 
+        this.config = config;
     }
 
     get_receiver(log) {
@@ -34,8 +34,12 @@ class ConsoleReceiver {
         return ConsoleReceiver.get_style(this.config.style[log.level]);
     }
 
-    error_format(log, spaces) {
+    error_stringify(log, spaces) {
         return JSON.stringify(log.error, null, spaces);
+    }
+
+    error_toString(log) {
+        return log.error.toString();
     }
 
     time_format(log) {
@@ -67,20 +71,29 @@ class ConsoleReceiver {
 
         if (log.error) {
             template = this.config.template.error;
-            log.error_formatted = this.error_format(log, template.spaces);
+            log.error_formatted = {
+                toString: this.error_toString(log),
+                stringify: this.error_stringify(log, template.spaces)
+            };
         }
 
         log.time_formatted = this.time_format(log);
-        
+
         let receiver = this.get_receiver(log);
         let style = this.get_style(log);
-        
+
         let content = template.content.format(log);
         content = this.hide_tokens(content);
 
         let lines = this.make_lines(content, template, log);
 
         this.send(lines, receiver, style);
+
+        if (log.error && this.config.template.error.raw.enabled)
+            console.error(
+                this.config.template.error.raw.message.format(log),
+                log.error
+            );
     }
 
     send(lines, receiver, style) {

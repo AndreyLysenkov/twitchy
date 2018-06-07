@@ -15,7 +15,7 @@ class BadgeParser {
             let parser_require = require(`./${this.config.folder}/${name}.js`);
             parser = parser_require;
         } catch (e) {
-            core.verbose(core.config.main.log.module, `found none specific ./parse/arg/user/${this.config.folder}/${name}`, e);
+            core.verbose(`found none specific ./parse/arg/user/${this.config.folder}/${name}`, e);
         }
         return {
             name: name,

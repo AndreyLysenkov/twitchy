@@ -14,10 +14,7 @@ class DiscordChannel {
                 .guilds.get(this.guildId)
                 .channels.get(this.channelId);
         } catch (e) {
-            core.warn(
-                core.config.main.log.module,
-                `can't find channel ${this.channelId} in guild ${this.guildId}`,
-                e);
+            core.warn(`can't find channel ${this.channelId} in guild ${this.guildId}`, e);
         }
     }
 

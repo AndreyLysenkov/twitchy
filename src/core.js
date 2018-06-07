@@ -64,11 +64,11 @@ Core.logger = {
 };
 
 // set short refs to logger;
-Core.verbose = Core.logger.core.verbose;
-Core.debug = Core.logger.core.debug;
-Core.log = Core.logger.core.log;
-Core.warn = Core.logger.core.warn;
-Core.error = Core.logger.core.error;
+Core.verbose = (message, error) => Core.logger.core.verbose(Core.config.main.log.module, message, error);
+Core.debug = (message, error) => Core.logger.core.debug(Core.config.main.log.module, message, error);
+Core.log = (message, error) => Core.logger.core.log(Core.config.main.log.module, message, error);
+Core.warn = (message, error) => Core.logger.core.warn(Core.config.main.log.module, message, error);
+Core.error = (message, error) => Core.logger.core.error(Core.config.main.log.module, message, error);
 
 // add string.format(); method from 'string-format' package;
 const format = require('string-format');

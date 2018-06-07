@@ -1,5 +1,5 @@
 // is this gonna be more redicilous then it is?;
-const core = require('../../../../../core.js');
+const core = require('../../../../core.js');
 const config = core.config.main.parser.badge;
 config.private = core.config.private.badge;
 
@@ -34,13 +34,14 @@ class BadgeCustomizer {
         let value = BadgeCustomizer.load_parse_emojie_value(separated);
         let content = BadgeCustomizer.load_parse_emojie_content(emojie);
 
-        let channel_badge = BadgeCustomizer.badge[channel];
-        if (!channel_badge)
-            channel_badge = {};
 
+        if (!BadgeCustomizer.badge[channel])
+            BadgeCustomizer.badge[channel] = {};
+        let channel_badge = BadgeCustomizer.badge[channel];
+
+        if (!channel_badge[type])
+            channel_badge[type] = {};
         let type_badge = channel_badge[type];
-        if (!type_badge)
-            type_badge = {};
 
         type_badge[value] = content;
     }

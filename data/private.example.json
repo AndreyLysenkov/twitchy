@@ -7,8 +7,9 @@
         }
     },
     "badge": {
-        "subscriber": {
-            "guild": "id_of_guild_with_twitch_subs_badges"
-        }
+        "guild":[
+            "id_of_guild_with_twitch_subs_badges",
+            "id_of_some_other_guild_with_some_other_badges"
+        ]
     }
 }

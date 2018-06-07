@@ -40,6 +40,14 @@ function default_badge(config, value) {
 }
 
 module.exports = (config, name, value, data) => {
+    // TODO; tmp;
+    require('../../../../core.js').vebose(JSON.stringify({
+        config: config,
+        name: name,
+        value: value,
+        data: data
+    }, null, 4));
+
     let channel = data.channel;
     if (!channel)
         return default_badge(config, value);

@@ -510,6 +510,12 @@
                         "resub": 6,
                         "subscription": 3
                     }
+                },
+                "latency": {
+                    "id": "latency",
+                    "position": {
+                        "pong": 1
+                    }
                 }
             }
         },
@@ -537,8 +543,23 @@
                 "logon",
                 "timeout",
                 "unhost",
+                "emoteonly",
+                "followersonly",
+                "join",
+                "part",
+                "message",
+                "mod",
                 "resub",
-                "subscription"
+                "subscription",
+                "ping",
+                "pong",
+                "r9kbeta",
+                "reconnect",
+                "slowmode",
+                "serverchange",
+                "subscribers",
+                "unmod",
+                "whisper"
             ],
             "require": "./{path}.js",
             "json_stringify_option": 4,
@@ -555,6 +576,13 @@
                     }
                 },
                 "chat": {
+                    "path": "main",
+                    "template": "{user.badge.stringify} **{user.name.display}** : {content}",
+                    "badge": {
+                        "join": ", "
+                    }
+                },
+                "message": {
                     "path": "main",
                     "template": "{user.badge.stringify} **{user.name.display}** : {content}",
                     "badge": {
@@ -637,6 +665,82 @@
                         "2": 10,
                         "3": 25
                     }
+                },
+                "emoteonly": {
+                    "path": "main",
+                    "template": "`emote only` mode was {config.active[active]}",
+                    "active": {
+                        "true": "enabled",
+                        "false": "disabled"
+                    }
+                },
+                "followersonly": {
+                    "path": "main",
+                    "template": "`followers only` mode was {config.active[active]}",
+                    "active": {
+                        "true": "enabled",
+                        "false": "disabled"
+                    }
+                },
+                "join": {
+                    "path": "main",
+                    "template": "**{username}** joined channel"
+                },
+                "mod": {
+                    "path": "main",
+                    "template": "**{username}** become a mod"
+                },
+                "part": {
+                    "path": "main",
+                    "template": "**{username}** left channel"
+                },
+                "ping": {
+                    "path": "main",
+                    "template": "```ping```"
+                },
+                "pong": {
+                    "path": "main",
+                    "template": "```pong {latency}ms```"
+                },
+                "r9kbeta": {
+                    "path": "main",
+                    "template": "`r9kbeta` mode was {config.active[active]}",
+                    "active": {
+                        "true": "enabled",
+                        "false": "disabled"
+                    }
+                },
+                "reconnect": {
+                    "path": "main",
+                    "template": "**reconnecting**"
+                },
+                "serverchange": {
+                    "path": "main",
+                    "template": "**server has been changed**"
+                },
+                "slowmode": {
+                    "path": "main",
+                    "template": "`slowmode` was {config.active[active]}",
+                    "active": {
+                        "true": "enabled",
+                        "false": "disabled"
+                    }
+                },
+                "subscribers": {
+                    "path": "main",
+                    "template": "`subscriber only` mode was {config.active[active]}",
+                    "active": {
+                        "true": "enabled",
+                        "false": "disabled"
+                    }
+                },
+                "unmod": {
+                    "path": "main",
+                    "template": "**{username}** is no longer a mod"
+                },
+                "whisper": {
+                    "path": "main",
+                    "template": "**{username}** to direct messages: {content}"
                 }
             }
         }

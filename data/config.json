@@ -122,11 +122,25 @@
                 "message"
             ],
             "require": "./{path}.js",
-            "id": {
-                "message": {
-                    "path": "message",
-                    "prefix": ".",
-                    "split": "/"
+            "message": {
+                "path": "message",
+                "id": "message",
+                "prefix": ".",
+                "split": "/",
+                "permission": "ADMINISTRATOR",
+                "require": "./{path}.js",
+                "command": {
+                    "list": [
+                        "about"
+                    ],
+                    "about": {
+                        "path": "about",
+                        "name": [
+                            "about",
+                            "info"
+                        ],
+                        "reply": "bot by allan_walpy"
+                    }
                 }
             }
         },

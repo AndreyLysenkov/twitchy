@@ -13,12 +13,12 @@ class CommandListener {
         config.event.forEach((event) => {
             let event_require = self.require_event(client, event);
             self.events.push(event_require);
-            client.on(event, event_require.call);
+            client.on(self.config.id, event_require.call);
         });
     }
 
     require_event(client, event) {
-        let event_config = config.id[event];
+        let event_config = config[event];
         let path = event_config.path;
         let EventListener = require(config.require.format({
             path: path

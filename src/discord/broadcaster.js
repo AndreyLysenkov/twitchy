@@ -51,9 +51,26 @@ class DiscordTwitchBroadcaster extends TwitchBroadcaster {
         });
     }
 
+    remove_receiver(twitch_channel, discord_channel) {
+        if (!twitch_channel.startsWith('#'))
+            twitch_channel = `#${twitch_channel}`;
+
+        if (!this.receiver[twitch_channel])
+            return;
+
+        this.receiver[twitch_channel] = this.receiver[twitch_channel]
+            .filter((receiver) => {
+                return receiver.channelId === discord_channel;
+            });
+    }
+
     addDiscordChannel(twitch_channel, id) {
         let discord_channel = new DiscordChannel(this.discord.client, id.guild, id.channel);
         this.add_receiver(twitch_channel, discord_channel);
+    }
+
+    unsubscribe(twitch_channel, discord_channel) {
+        return this.remove_receiver(twitch_channel, discord_channel);
     }
 
 }

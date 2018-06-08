@@ -3,7 +3,7 @@ const core = require('../../core.js');
 class RemoveCommand {
 
     static call(data) {
-        let guilds = core.bot.discord.guild;
+        let guilds = core.app.bot.discord.guild;
         let broadcaster = core.app.bot.discord.broadcaster;
 
         if (data.args.length < 1)
@@ -19,8 +19,8 @@ class RemoveCommand {
 
         config.config.channels = config.config.channels
             .filter((setting) => {
-                return setting.discord === discord_channel
-                     && setting.twitch === twitch_channel;
+                return !(setting.discord === discord_channel
+                     && setting.twitch === twitch_channel);
             });
         config.update();
 

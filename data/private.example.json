@@ -11,5 +11,10 @@
             "id_of_guild_with_twitch_subs_badges",
             "id_of_some_other_guild_with_some_other_badges"
         ]
-    }
+    },
+    "owners": [
+        "id_of_your_discord_account",
+        "id_of_someone_you_trust_to_be_a_bot_owner",
+        "id_of_your_other_account"
+    ]
 }

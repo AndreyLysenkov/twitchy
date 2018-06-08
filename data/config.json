@@ -167,7 +167,7 @@
                             "reboot",
                             "restart"
                         ],
-                        "reply": "killing process"
+                        "reply": "killing procces"
                     },
                     "add": {
                         "path": "add",

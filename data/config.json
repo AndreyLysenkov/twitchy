@@ -138,7 +138,8 @@
                         "about",
                         "add",
                         "remove",
-                        "emojie"
+                        "emojie",
+                        "setting"
                     ],
                     "about": {
                         "path": "about",
@@ -147,6 +148,17 @@
                             "info"
                         ],
                         "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}"
+                    },
+                    "setting": {
+                        "path": "setting",
+                        "name": [
+                            "setting",
+                            "settings",
+                            "config",
+                            "configutation"
+                        ],
+                        "reply": "this guild configs are: \n```json\n{guild_config}\n```",
+                        "json_option": 4
                     },
                     "add": {
                         "path": "add",

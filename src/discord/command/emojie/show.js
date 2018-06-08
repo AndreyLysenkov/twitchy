@@ -3,10 +3,6 @@ const guilds_config = core.app.bot.discord.guild;
 
 class EmojiShowSubcommand {
 
-    static getEmojie(list, id) {
-        return list.get(id).toString();
-    }
-
     static getEmojis(guild) {
         return guild.emojis;
     }
@@ -23,7 +19,9 @@ class EmojiShowSubcommand {
     }
 
     static toSting(config, list) {
-        list.forEach(emojie => emojie.toSting());
+        if (list.length === 0)
+            return config.none;
+        list.forEach(emojie => emojie.toString());
         return list.join(config.separator);
     }
 

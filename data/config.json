@@ -236,8 +236,9 @@
                             },
                             "show": {
                                 "path": "show",
-                                "reply": "emojie settings: \n```json\n{emojie_setting}\n```",
-                                "json_option": 4
+                                "reply": "emojie settings: \n```json\n{emojie_setting}\n```\nemojis **in** list: {emojie_list_in}\nemojis **out** list: {emojie_list_out}",
+                                "json_option": 4,
+                                "separator": " "
                             }
                         }
                     }

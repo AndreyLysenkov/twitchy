@@ -139,7 +139,8 @@
                         "add",
                         "remove",
                         "emojie",
-                        "setting"
+                        "setting",
+                        "reboot"
                     ],
                     "about": {
                         "path": "about",
@@ -159,6 +160,14 @@
                         ],
                         "reply": "this guild configs are: \n```json\n{guild_config}\n```",
                         "json_option": 4
+                    },
+                    "reboot": {
+                        "path": "reboot",
+                        "name": [
+                            "reboot",
+                            "restart"
+                        ],
+                        "reply": "killing process"
                     },
                     "add": {
                         "path": "add",

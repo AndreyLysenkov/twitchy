@@ -135,7 +135,10 @@
                 "require": "./{path}.js",
                 "command": {
                     "list": [
-                        "about"
+                        "about",
+                        "add",
+                        "remove",
+                        "emojie"
                     ],
                     "about": {
                         "path": "about",
@@ -144,6 +147,96 @@
                             "info"
                         ],
                         "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}"
+                    },
+                    "add": {
+                        "path": "add",
+                        "name": [
+                            "add",
+                            "добавь",
+                            "добавить"
+                        ],
+                        "reply": "добавлено"
+                    },
+                    "remove": {
+                        "path": "remove",
+                        "name": [
+                            "remove",
+                            "delete",
+                            "purge",
+                            "удали",
+                            "удалить"
+                        ],
+                        "reply": "удалено"
+                    },
+                    "emojie": {
+                        "path": "emoji/core",
+                        "name": [
+                            "emojie",
+                            "emoji",
+                            "эмодзи",
+                            "эмоджи",
+                            "смайл",
+                            "смайлес",
+                            "смайлесы"
+                        ],
+                        "mode": {
+                            "value": {
+                                "set": "set",
+                                "list": "list",
+                                "show": "show",
+                                "see": "show"
+                            },
+                            "set": {
+                                "path": "set",
+                                "mode": {
+                                    "value": {
+                                        "auto": "auto",
+                                        "black": "black",
+                                        "blacklist": "black",
+                                        "white": "white",
+                                        "whitelist": "white"
+                                    },
+                                    "auto": {
+                                        "path": "set.value",
+                                        "value": "auto"
+                                    },
+                                    "black": {
+                                        "path": "set.value",
+                                        "value": "black"
+                                    },
+                                    "white": {
+                                        "path": "set.value",
+                                        "value": "white"
+                                    }
+                                }
+                            },
+                            "list": {
+                                "path": "list",
+                                "mode": {
+                                    "value": {
+                                        "add": "add",
+                                        "remove": "remove",
+                                        "delete": "remove"
+                                    },
+                                    "add": {
+                                        "path": "list.operation",
+                                        "isAdd": true,
+                                        "reply": "added emoji"
+                                    },
+                                    "remove": {
+                                        "path": "list.operation",
+                                        "isAdd": false,
+                                        "reply": "removed emoji",
+                                        "failed": "not found `{data.args[0]}` emoji"
+                                    }
+                                }
+                            },
+                            "show": {
+                                "path": "show",
+                                "reply": "emojie settings: \n```json\n{emojie_setting}\n```",
+                                "json_option": 4
+                            }
+                        }
                     }
                 }
             }

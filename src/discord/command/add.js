@@ -26,6 +26,8 @@ class AddCommand {
             guild: guildId,
             channel: discord_channel
         });
+
+        data.channel.send(data.config.reply.format(data));
     }
 
 }

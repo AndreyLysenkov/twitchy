@@ -36,6 +36,7 @@ class App {
                 });
             });
 
+            discord_bot.guild[guild.id] = guild_config;
             discord_bot.emojie.fetch(guild_config);
         });
 

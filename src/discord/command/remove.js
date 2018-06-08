@@ -24,6 +24,8 @@ class RemoveCommand {
         config.update();
 
         broadcaster.unsubscribe(twitch_channel, discord_channel);
+
+        data.channel.send(data.config.reply.format(data));
     }
 
 }

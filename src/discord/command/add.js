@@ -4,7 +4,7 @@ class AddCommand {
 
     static call(data) {
         let guilds = core.app.bot.discord.guild;
-        let broadcaster = core.bot.discord.broadcaster;
+        let broadcaster = core.app.bot.discord.broadcaster;
 
         if (data.args.length < 1)
             return;
@@ -17,7 +17,7 @@ class AddCommand {
         let guildId = data.guild;
         let config = guilds[guildId];
 
-        config.channels.push({
+        config.config.channels.push({
             discord: discord_channel,
             twitch: twitch_channel
         });

@@ -4,7 +4,7 @@ class RemoveCommand {
 
     static call(data) {
         let guilds = core.bot.discord.guild;
-        let broadcaster = core.bot.discord.broadcaster;
+        let broadcaster = core.app.bot.discord.broadcaster;
 
         if (data.args.length < 1)
             return;
@@ -17,7 +17,7 @@ class RemoveCommand {
         let guildId = data.guild;
         let config = guilds[guildId];
 
-        config.channels = config.channels
+        config.config.channels = config.config.channels
             .filter((setting) => {
                 return setting.discord === discord_channel
                      && setting.twitch === twitch_channel;

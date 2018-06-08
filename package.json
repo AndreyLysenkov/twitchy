@@ -64,7 +64,7 @@
         "botty-install-linux": "sudo npm install -g forever",
         "botty-install-win": "npm install -g forever",
         "botty-install": "npm run-script botty-install-linux || npm run-script botty-install-win",
-        "start": "forever -f -l ~/log/twitch.log start ./src/main.js",
+        "start": "forever -f -l ~/log/twitch.log --append start ./src/main.js",
         "stop": "forever stop ./src/main.js",
         "status": "forever list"
     }

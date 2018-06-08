@@ -1,9 +1,14 @@
+// forever prevent using npm_package_config env variables, so this is tmp solution;
+// NB! flags will be no longer working 'cause of this hack;
+// TODO;
+const npm_package_config = require('../package.json').config;
+
 // load enviroment variables;
-const data_directory = process.env.npm_package_config_data_directory;
-const guild_config_directory = process.env.npm_package_config_guild_config_directory;
-const lang_file = process.env.npm_package_config_lang_file;
-const config_file = process.env.npm_package_config_config_file;
-const private_config_file = process.env.npm_package_config_private_config_file;
+const data_directory = npm_package_config["data-directory"];
+const guild_config_directory = npm_package_config["guild-config-directory"];
+const lang_file = npm_package_config["lang-file"];
+const config_file = npm_package_config["config-file"];
+const private_config_file = npm_package_config["private-config-file"];
 
 class Core {
 

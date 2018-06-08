@@ -43,10 +43,12 @@
         "string-format": "^2.0.0",
         "moment": "^2.22.1",
         "moment-timezone": "^0.5.17",
-        "chalk": "^2.4.1"
+        "chalk": "^2.4.1",
+        "forever": "^0.15.3"
     },
     "devDependencies": {
-        "eslint": "github:eslint/eslint"
+        "eslint": "github:eslint/eslint",
+        "nodemon": "^1.17.5"
     },
     "bundleDependencies": [
         "discord.js",
@@ -54,12 +56,15 @@
         "string-format",
         "moment",
         "moment-timezone",
-        "chalk"
+        "chalk",
+        "forever"
     ],
     "main": "src/main.js",
     "scripts": {
-        "start": "npm run-script start-win || npm run-script start-linux",
-        "start-win": "node --use-strict ./src/main.js",
-        "start-linux": "nodejs --use-strict ./src/main.js"
+        "botty-install-linux": "sudo npm install -g forever",
+        "botty-install-win": "npm install -g forever",
+        "botty-install": "npm run-script botty-install-linux || npm run-script botty-install-win",
+        "start": "forever start -f ./src/main.js",
+        "stop": "forever stop ./src/main.js"
     }
 }

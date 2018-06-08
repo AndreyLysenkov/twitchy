@@ -7,12 +7,18 @@ class TwitchBroadcaster {
         this.send = this.send_entry;
     }
 
+    addChannel(channel) {
+        if (!channel.startsWith('#'))
+            channel = `#${channel}`;
+        if (!this.receiver[channel])
+            this.receiver[channel] = [];
+    }
+
     add_receiver(channel, receiver) {
         if (!channel.startsWith('#'))
             channel = `#${channel}`;
 
-        if (!this.receiver[channel])
-            this.receiver[channel] = [];
+        this.addChannel(channel);
 
         this.receiver[channel].push(receiver);
         this.twitch.addChannel(channel);

@@ -38,6 +38,9 @@ class TwitchBot {
     set_client_config_channels() {
         let channels = [];
         config.channels.forEach((channel) => {
+            this.broadcaster.forEach((broadcaster) => {
+                broadcaster.addChannel(channel);
+            });
             if (channel !== config.status)
                 channels.push(channel);
         });

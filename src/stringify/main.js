@@ -18,7 +18,7 @@ class MainEvent {
         if (!this.entry.user
             || !this.entry.user.badge
             || !this.config.badge
-            || !this.config.badge.join)
+            || !this.config.badge.list)
             return;
         this.entry.user.badge.stringify = this.entry.user.badge.list.join(this.config.badge.join);
     }

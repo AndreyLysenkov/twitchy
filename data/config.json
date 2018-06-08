@@ -169,7 +169,7 @@
                         "reply": "удалено"
                     },
                     "emojie": {
-                        "path": "emoji/core",
+                        "path": "emojie/core",
                         "name": [
                             "emojie",
                             "emoji",

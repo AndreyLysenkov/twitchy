@@ -1,10 +1,11 @@
 const core = require('../../core.js');
-let guilds = core.bot.discord.guild;
-let broadcaster = core.bot.discord.broadcaster;
 
 class RemoveCommand {
 
     static call(data) {
+        let guilds = core.bot.discord.guild;
+        let broadcaster = core.bot.discord.broadcaster;
+
         if (data.args.length < 1)
             return;
 

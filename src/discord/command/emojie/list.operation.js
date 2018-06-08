@@ -4,6 +4,8 @@ const guilds_config = core.app.bot.discord.guild;
 class EmojieListOperationSubcommand {
 
     static add(data, config, emojie) {
+        if (!config.config.emojie.list)
+            config.config.emojie.list = [];
         config.config.emojie.list.push(emojie);
         config.update();
 
@@ -12,6 +14,7 @@ class EmojieListOperationSubcommand {
 
     static remove(data, config, emojie) {
         let index = config.config.emojie.list.indexOf(emojie);
+        data.emojie = emojie;
         if (index < 0)
             return data.config.failed.format(data);
 

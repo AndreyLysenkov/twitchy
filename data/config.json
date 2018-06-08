@@ -198,15 +198,18 @@
                                     },
                                     "auto": {
                                         "path": "set.value",
-                                        "value": "auto"
+                                        "value": "auto",
+                                        "reply": "set to add all emojie automaticly"
                                     },
                                     "black": {
                                         "path": "set.value",
-                                        "value": "black"
+                                        "value": "black",
+                                        "reply": "set to add all emojie except specified in list"
                                     },
                                     "white": {
                                         "path": "set.value",
-                                        "value": "white"
+                                        "value": "white",
+                                        "reply": "set to add emojie only specified in list"
                                     }
                                 }
                             },
@@ -221,13 +224,13 @@
                                     "add": {
                                         "path": "list.operation",
                                         "isAdd": true,
-                                        "reply": "added emoji"
+                                        "reply": "added emojie"
                                     },
                                     "remove": {
                                         "path": "list.operation",
                                         "isAdd": false,
-                                        "reply": "removed emoji",
-                                        "failed": "not found `{data.args[0]}` emoji"
+                                        "reply": "removed emojie",
+                                        "failed": "not found `{emojie}` emojie"
                                     }
                                 }
                             },

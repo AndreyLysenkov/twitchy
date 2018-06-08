@@ -11,6 +11,7 @@ class EmojieCommand {
         let value = data.config.value;
         guild_config.config.emojie.mode = value;
         guild_config.update();
+        data.channel.send(data.config.reply.format(data));
     }
 
 }

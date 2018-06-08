@@ -1,5 +1,5 @@
 const core = require('../../../core.js');
-const guilds_config = core.bot.discord.guild;
+const guilds_config = core.app.bot.discord.guild;
 
 class EmojiShowSubcommand {
 
@@ -8,8 +8,8 @@ class EmojiShowSubcommand {
         if (!guild_config)
             return;
 
-        data.emojie_setting = JSON.stringify(guild_config.emojie, null, data.config.json_option);
-        data.channel.send(data.config.reple.format(data));
+        data.emojie_setting = JSON.stringify(guild_config.config.emojie, null, data.config.json_option);
+        data.channel.send(data.config.reply.format(data));
     }
 
 }

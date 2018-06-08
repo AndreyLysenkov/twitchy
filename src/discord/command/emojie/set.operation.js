@@ -1,10 +1,10 @@
 const core = require('../../../core.js');
-const guilds_config = core.bot.discord.guild;
+const guilds_config = core.app.bot.discord.guild;
 
 class EmojieListOperationSubcommand {
 
     static add(data, config, emojie) {
-        config.emojie.list.push(emojie);
+        config.config.emojie.list.push(emojie);
         config.update();
 
         return data.config.reply.format(data);

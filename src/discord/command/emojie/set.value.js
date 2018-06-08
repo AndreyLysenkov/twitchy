@@ -1,5 +1,5 @@
 const core = require('../../../core.js');
-const guilds_config = core.bot.discord.guild;
+const guilds_config = core.app.bot.discord.guild;
 
 class EmojieCommand {
 

@@ -123,7 +123,8 @@
         },
         "command": {
             "event": [
-                "message"
+                "message",
+                "guild_join"
             ],
             "require": "./{path}.js",
             "message": {
@@ -265,6 +266,12 @@
                         }
                     }
                 }
+            },
+            "guild_join": {
+                "path": "guild_join",
+                "id": "guildCreate",
+                "channel": "#status#",
+                "event": "discord_join"
             }
         },
         "regex": "\\[*`~_]\\g"
@@ -713,11 +720,16 @@
                 "serverchange",
                 "subscribers",
                 "unmod",
-                "whisper"
+                "whisper",
+                "discord_join"
             ],
             "require": "./{path}.js",
             "json_stringify_option": 4,
             "id": {
+                "discord_join": {
+                    "path": "main",
+                    "template": "**joined** `{guildId}` server"
+                },
                 "unsupported": {
                     "path": "main",
                     "template": "**unsupported event** \n```json\n{stringified}\n```"

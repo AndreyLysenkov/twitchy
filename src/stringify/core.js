@@ -2,10 +2,10 @@ const core = require('../core.js');
 const config = core.config.main.stringify;
 
 function getEvent(entry) {
-    if (!config.event.list.includes(entry.data.event))
+    if (!config.event.list.includes(entry.event))
         return config.event.id.unsupported;
-    
-    return config.event.id[entry.data.event];
+
+    return config.event.id[entry.event];
 }
 
 function requireEvent(event) {

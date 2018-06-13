@@ -159,61 +159,60 @@
                             "помощь",
                             "list"
                         ],
-                        "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}",
                         "template": {
-                            "command": "```markdown\n{command.name}```usage `{command.usage}`\navailble to **{command.permission}**\n{command.description}",
+                            "command": "```markdown\n{command.name}```использование `{command.usage}`\nдоступен для **{command.permission}**\n{command.description}",
                             "join": "\n\n",
-                            "reply": "here is the list of availible commands\n{commands}\n```---```\nhow to manage emojies: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md\nhow to find discord channel id: https://github.com/allan-walpy/twitchy/blob/master/docs/discord_channel_id.md"
+                            "reply": "команды бота\n{commands}\n```---```\nкак управлять смайлесами бота: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md\nкак найти id канала дискорда https://github.com/allan-walpy/twitchy/blob/master/docs/discord_channel_id.md"
                         },
                         "command": [
                             {
                                 "path": "add",
-                                "name": "add channel",
+                                "name": "добавить канал",
                                 "usage": "./add/twitch_channel_name/discord_channel_id",
-                                "description": "set to log `twitch_channel_name` to discord channel with id `discord_channel_id`\n if discord channelid is not specified - take channel, where command was entered",
-                                "permission": "server administrator"
+                                "description": "записывать логи канала твича `twitch_channel_name` в канал дискорда с id `discord_channel_id`\n если `discord_channel_id` не указан - берется текущий канал",
+                                "permission": "администратор вашей конфы"
                             },
                             {
                                 "path": "remove",
-                                "name": "remove channel",
+                                "name": "удалить канал",
                                 "usage": "./remove/twitch_channel_name/discord_channel_id",
-                                "description": "remove setted log `twitch_channel_name` to discord channel with id `discord_channel_id`\n if discord channelid is not specified - take channel, where command was entered",
-                                "permission": "server administrator"
+                                "description": "перестать записывать логи канала твича `twitch_channel_name` в канал дискорда с id `discord_channel_id`\n если `discord_channel_id` не указан - берется текущий канал",
+                                "permission": "администратор вашей конфы"
                             },
                             {
                                 "path": "reboot",
-                                "name": "reboot",
+                                "name": "перезапустить",
                                 "usage": "./reboot",
-                                "description": "reboot bot",
-                                "permission": "one of bot owner, specified in ./data/private.json"
+                                "description": "перезапуск бота",
+                                "permission": "владелец бота, указанный в его настройках"
                             },
                             {
-                                "path": "emojie/add",
-                                "name": "emojie add",
-                                "usage": "./emojie/add/emojie_id",
-                                "description": "add discord emojie with id `emojie_id` to bot",
-                                "permission": "server administrator"
+                                "path": "emojie/list/add",
+                                "name": "добавить смайлес",
+                                "usage": "./emojie/list/add/emojie_id",
+                                "description": "добавить в бот смайлес из вашей конфы с id `emojie_id`",
+                                "permission": "администратор вашей конфы"
                             },
                             {
-                                "path": "emojie/remove",
-                                "name": "emojie remove",
-                                "usage": "./emojie/remove/emojie_id",
-                                "description": "remove discord emojie with id `emojie_id` to bot",
-                                "permission": "server administrator"
+                                "path": "emojie/list/remove",
+                                "name": "удалить смайлес",
+                                "usage": "./emojie/list/remove/emojie_id",
+                                "description": "удалить смайлес `emojie_id` вашей конфы из бота",
+                                "permission": "администратор вашей конфы"
                             },
                             {
                                 "path": "emojie/set",
-                                "name": "emojie set",
+                                "name": "режим добавления смайлесов",
                                 "usage": "./emojie/set/[auto/black/white]",
-                                "description": "set emojie list mode",
-                                "permission": "server administrator"
+                                "description": "установить режим добавления смайлесов\nчто это такое ниже по ссылке по управлению смайлесами",
+                                "permission": "администратор вашей конфы"
                             },
                             {
                                 "path": "emojie/show",
-                                "name": "emojie show",
+                                "name": "показать смайлесы",
                                 "usage": "./emojie/show",
-                                "description": "show setted emojis",
-                                "permission": "server administrator"
+                                "description": "показать настройки смайлесов для конфы",
+                                "permission": "администратор вашей конфы"
                             },
                             {
                                 "path": "settings",
@@ -825,28 +824,28 @@
                     "path": "main",
                     "template": "{user.badge.stringify} **{user.name.display} {content}**",
                     "badge": {
-                        "join": ", "
+                        "join": " "
                     }
                 },
                 "chat": {
                     "path": "main",
                     "template": "{user.badge.stringify} **{user.name.display}** : {content}",
                     "badge": {
-                        "join": ", "
+                        "join": " "
                     }
                 },
                 "message": {
                     "path": "main",
                     "template": "{user.badge.stringify} **{user.name.display}** : {content}",
                     "badge": {
-                        "join": ", "
+                        "join": " "
                     }
                 },
                 "cheer": {
                     "path": "main",
                     "template": "{user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content}",
                     "badge": {
-                        "join": ", "
+                        "join": " "
                     }
                 },
                 "hosting": {

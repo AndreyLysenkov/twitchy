@@ -79,6 +79,8 @@ Core.error = (message, error) => Core.logger.core.error(Core.config.main.log.mod
 const format = require('string-format');
 format.extend(String.prototype, {
     discord_escape: (s) => {
+        if (!s)
+            return s;
         let escaped = s;
         let list = Core.config.main.discord.escape;
         list.forEach((rule) => {

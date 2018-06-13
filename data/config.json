@@ -141,7 +141,8 @@
                         "remove",
                         "emojie",
                         "setting",
-                        "reboot"
+                        "reboot",
+                        "help"
                     ],
                     "about": {
                         "path": "about",
@@ -150,6 +151,87 @@
                             "info"
                         ],
                         "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}"
+                    },
+                    "help": {
+                        "path": "help",
+                        "name": [
+                            "help",
+                            "помощь",
+                            "list"
+                        ],
+                        "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}",
+                        "command": [
+                            {
+                                "path": "add",
+                                "name": "add channel",
+                                "usage": "./add/twitch_channel_name/discord_channel_id",
+                                "description": "set to log `twitch_channel_name` to discord channel with id `discord_channel_id`\n if discord channelid is not specified - take channel, where command was entered\nhow to find discord channel id: https://github.com/allan-walpy/twitchy/blob/master/docs/discord_channel_id.md",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "remove",
+                                "name": "remove channel",
+                                "usage": "./remove/twitch_channel_name/discord_channel_id",
+                                "description": "remove setted log `twitch_channel_name` to discord channel with id `discord_channel_id`\n if discord channelid is not specified - take channel, where command was entered\nhow to find discord channel id: https://github.com/allan-walpy/twitchy/blob/master/docs/discord_channel_id.md",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "reboot",
+                                "name": "reboot",
+                                "usage": "./reboot",
+                                "description": "reboot bot",
+                                "permission": "one of bot owner, specified in ./data/private.json"
+                            },
+                            {
+                                "path": "emojie/add",
+                                "name": "emojie add",
+                                "usage": "./emojie/add/emojie_id",
+                                "description": "add discord emojie with id `emojie_id` to bot\nhow to manage emojies: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "emojie/remove",
+                                "name": "emojie remove",
+                                "usage": "./emojie/remove/emojie_id",
+                                "description": "remove discord emojie with id `emojie_id` to bot\nhow to manage emojies: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "emojie/set",
+                                "name": "emojie set",
+                                "usage": "./emojie/set/[auto/black/white]",
+                                "description": "set emojie list mode\nhow to manage emojies: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "emojie/show",
+                                "name": "emojie show",
+                                "usage": "./emojie/show",
+                                "description": "show setted emojis",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "settings",
+                                "name": "settings",
+                                "usage": "./settings",
+                                "description": "show settings for your server",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "help",
+                                "name": "help",
+                                "usage": "./help",
+                                "description": "show list of commands",
+                                "permission": "server administrator"
+                            },
+                            {
+                                "path": "about",
+                                "name": "about",
+                                "usage": "./about",
+                                "description": "show info about bot and its developer",
+                                "permission": "server administrator"
+                            }
+                        ]
                     },
                     "setting": {
                         "path": "setting",

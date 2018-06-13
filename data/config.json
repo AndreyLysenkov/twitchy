@@ -160,6 +160,11 @@
                             "list"
                         ],
                         "reply": "{name} v{version} by {author.name} licensed under {license}\n\nhomepage: {homepage}\n\nbugs: {bugs.url}\n\nauthor's page: {author.url}",
+                        "template": {
+                            "command": "```{command.name}```usage `{command.usage}`\navailble to **{command.permission}**\n{command.description}\n`{command.path}`",
+                            "join": "\n```\n--- --- --- --- --- ---\n```",
+                            "reply": "here is the list of availible commands\n{data.config.template.join}{commands}{data.config.template.join}"
+                        },
                         "command": [
                             {
                                 "path": "add",

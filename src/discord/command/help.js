@@ -12,7 +12,7 @@ class HelpCommand {
                 data: data
             }));
         });
-        let commands_lines = list.join(config.template.join.format(data));
+        let commands_lines = commands.join(config.template.join.format(data));
         data.channel.send(config.template.reply.format({
             data: data,
             commands: commands_lines

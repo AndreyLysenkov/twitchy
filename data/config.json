@@ -360,7 +360,23 @@
                 "event": "discord_join"
             }
         },
-        "regex": "\\[*`~_]\\g"
+        "escape": [
+            {
+                "value": [
+                    "*",
+                    "`",
+                    "~",
+                    "_"
+                ],
+                "replace": "\\{0}"
+            },
+            {
+                "value": [
+                    "@"
+                ],
+                "replace": "{0}​"
+            }
+        ]
     },
     "twitch": {
         "client": {
@@ -822,28 +838,28 @@
                 },
                 "action": {
                     "path": "main",
-                    "template": "{user.badge.stringify} **{user.name.display} {content}**",
+                    "template": "{user.badge.stringify} **{user.name.display} {content!discord_escape}**",
                     "badge": {
                         "join": " "
                     }
                 },
                 "chat": {
                     "path": "main",
-                    "template": "{user.badge.stringify} **{user.name.display}** : {content}",
+                    "template": "{user.badge.stringify} **{user.name.display}** : {content!discord_escape}",
                     "badge": {
                         "join": " "
                     }
                 },
                 "message": {
                     "path": "main",
-                    "template": "{user.badge.stringify} **{user.name.display}** : {content}",
+                    "template": "{user.badge.stringify} **{user.name.display}** : {content!discord_escape}",
                     "badge": {
                         "join": " "
                     }
                 },
                 "cheer": {
                     "path": "main",
-                    "template": "{user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content}",
+                    "template": "{user.badge.stringify} **{user.name.display}** 💎cheer💎 : {content!discord_escape}",
                     "badge": {
                         "join": " "
                     }
@@ -890,9 +906,9 @@
                 },
                 "resub": {
                     "path": "sub",
-                    "template": "**{username}** resub **{months}** месяц за **{parsed.tier}** долларсов\n{content}",
+                    "template": "**{username}** resub **{months}** месяц за **{parsed.tier}** долларсов\n{content!discord_escape}",
                     "prime": {
-                        "template": "**{username}** resub **{months}** месяц через *писосный* **прайм**\n{content}"
+                        "template": "**{username}** resub **{months}** месяц через *писосный* **прайм**\n{content!discord_escape}"
                     },
                     "content": {
                         "none": ""
@@ -905,9 +921,9 @@
                 },
                 "subscription": {
                     "path": "sub",
-                    "template": "**{username}** sub за **{parsed.tier}** долларсов\n{content}",
+                    "template": "**{username}** sub за **{parsed.tier}** долларсов\n{content!discord_escape}",
                     "prime": {
-                        "template": "**{username}** sub через *писосный* **прайм**\n{content}"
+                        "template": "**{username}** sub через *писосный* **прайм**\n{content!discord_escape}"
                     },
                     "content": {
                         "none": ""

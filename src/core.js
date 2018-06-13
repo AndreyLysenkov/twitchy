@@ -78,7 +78,16 @@ Core.error = (message, error) => Core.logger.core.error(Core.config.main.log.mod
 // add string.format(); method from 'string-format' package;
 const format = require('string-format');
 format.extend(String.prototype, {
-    discord_escape: s => s.replace(Core.config.main.discord.escape, c => '\\' + c)
+    discord_escape: (s) => {
+        let escaped = s;
+        let list = Core.config.main.discord.escape;
+        list.forEach((rule) => {
+            rule.value.forEach((str) => {
+                escaped = escaped.replace(str, rule.replace.format(str));
+            });
+        });
+        return escaped;
+    }
 });
 
 module.exports = Core;

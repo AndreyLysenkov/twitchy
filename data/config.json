@@ -834,7 +834,7 @@
                 },
                 "unsupported": {
                     "path": "main",
-                    "template": "**unsupported event** \n```json\n{stringified}\n```"
+                    "template": "**unsupported event** \n```json\n{stringified!discord_escape}\n```"
                 },
                 "action": {
                     "path": "main",

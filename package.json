@@ -1,6 +1,6 @@
 {
     "name": "twitchy",
-    "version": "0.9.0-beta",
+    "version": "0.9.1-beta",
     "license": "MIT",
     "description": "log twitch chat to discord chat",
     "keywords": [
@@ -16,6 +16,7 @@
         "url": "https://allan-walpy.github.io"
     },
     "homepage": "https://github.com/allan-walpy/twitchy#readme",
+    "donatepage": "https://money.yandex.ru/to/41001642565685",
     "repository": "github:allan_walpy/twitchy",
     "bugs": {
         "url": "https://github.com/allan-walpy/twitchy/issues"

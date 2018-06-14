@@ -150,7 +150,7 @@
                             "about",
                             "info"
                         ],
-                        "reply": "{name} v{version} by {author.name} лицензия {license}\n\nстраница бота <{homepage}>\n\nбаги писать сюда <{bugs.url}>\n\nстраничка автора <{author.url}>\n\nдонут <donatepage>"
+                        "reply": "{name} v{version} by {author.name} лицензия {license}\n\nстраница бота <{homepage}>\n\nбаги писать сюда <{bugs.url}>\n\nстраничка автора <{author.url}>\n\nдонут <{donatepage}>"
                     },
                     "help": {
                         "path": "help",

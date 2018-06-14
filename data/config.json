@@ -160,7 +160,7 @@
                             "list"
                         ],
                         "template": {
-                            "command": "```markdown\n{command.name}```использование `{command.usage}`\nдоступен для **{command.permission}**\n{command.description}",
+                            "command": "```{command.name}```использование `{command.usage}`\nдоступен для **{command.permission}**\n{command.description}",
                             "join": "\n\n",
                             "reply": "команды бота\n{commands}\n```---```\nкак управлять смайлесами бота: https://github.com/allan-walpy/twitchy/blob/master/docs/emojie_managment.md\nкак найти id канала дискорда https://github.com/allan-walpy/twitchy/blob/master/docs/discord_channel_id.md"
                         },

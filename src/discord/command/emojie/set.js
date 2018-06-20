@@ -1,4 +1,4 @@
-class EmojieCommand {
+class SetEmojieCommand {
 
     static call(data) {
         if (data.args.length < 1)
@@ -12,7 +12,7 @@ class EmojieCommand {
             return;
 
         let mode_config = data.config.mode[parsed_mode];
-        let receiver = EmojieCommand.mode_require(mode_config);
+        let receiver = SetEmojieCommand.mode_require(mode_config);
         data.config = mode_config;
         receiver.call(data);
     }
@@ -23,4 +23,4 @@ class EmojieCommand {
 
 }
 
-module.exports = EmojieCommand;
+module.exports = SetEmojieCommand;

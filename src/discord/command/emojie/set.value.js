@@ -1,7 +1,7 @@
 const core = require('../../../core.js');
 const guilds_config = core.app.bot.discord.guild;
 
-class EmojieCommand {
+class ValueEmojieCommand {
 
     static call(data) {
         let guild_config = guilds_config[data.channel.guild.id];
@@ -16,4 +16,4 @@ class EmojieCommand {
 
 }
 
-module.exports = EmojieCommand;
+module.exports = ValueEmojieCommand;
